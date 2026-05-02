@@ -1,0 +1,2027 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="rOAT" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler1OATOff" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler1OATOn" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler2OAT1On" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler2OAT1Off" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler2OAT2On" Datatype="Real" Accessibility="Public" />
+    <Member Name="rBoiler2OAT2Off" Datatype="Real" Accessibility="Public" />
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut">
+    <Member Name="xBoiler1OATRequest" Datatype="Bool" Accessibility="Public" />
+    <Member Name="xBoiler2OATRequest" Datatype="Bool" Accessibility="Public" />
+  </Section>
+  <Section Name="Temp">
+    <Member Name="FA_temp" Datatype="Real" />
+    <Member Name="xB1State" Datatype="Bool" />
+    <Member Name="xB2Band1State" Datatype="Bool" />
+    <Member Name="xB2Band2State" Datatype="Bool" />
+    <Member Name="xB2Band1Effective" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>Boiler_UnitState</Name>
+      <Namespace />
+      <Number>61000</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text>BoilerOpMode                                        BoilerUnitState
+0-OFF/Summer                                       0 Off
+1-On/Winter                                             1 ColdStandBy
+                                                                  1 HotStandBy
+                                                                  2 Heating</Text>
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="FirstScan" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text="THEN" UId="28" />
+  <NewLine Num="1" UId="29" />
+  <Blank Num="4" UId="30" />
+  <Token Text=";" UId="31" />
+  <NewLine Num="1" UId="32" />
+  <Blank Num="4" UId="33" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="34">
+    <Text UId="35">"AHUUnitStates".UnitStates.cActual[#iUnitID] := 0;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="36" />
+  <Blank Num="4" UId="37" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="38">
+    <Text UId="39">"AHUUnitStates".UnitStates.cTarget[#iUnitID] := 0;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="40" />
+  <Token Text="END_IF" UId="41" />
+  <Token Text=";" UId="42" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="HSsDI" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="Requests" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="xSeasonAuto" UId="30">
+        <Token Text="[" UId="31" />
+        <Access Scope="LiteralConstant" UId="32">
+          <Constant UId="33">
+            <ConstantValue UId="35">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="36" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="37" />
+  <Token Text="THEN" UId="38" />
+  <NewLine Num="1" UId="39" />
+  <Blank Num="4" UId="40" />
+  <Access Scope="GlobalVariable" UId="41">
+    <Symbol UId="42">
+      <Component Name="BoilerOpModes" UId="43">
+        <BooleanAttribute Name="HasQuotes" UId="44">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="45" />
+      <Component Name="OpModes" UId="46" />
+      <Token Text="." UId="47" />
+      <Component Name="cPreselectedOpModePanel" UId="48">
+        <Token Text="[" UId="49" />
+        <Access Scope="LiteralConstant" UId="50">
+          <Constant UId="51">
+            <ConstantValue UId="53">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="54" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="55" />
+  <Token Text=":=" UId="56" />
+  <Blank Num="1" UId="57" />
+  <Access Scope="LiteralConstant" UId="58">
+    <Constant UId="59">
+      <ConstantValue UId="61">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="62" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="63">
+    <Text UId="64">Auto</Text>
+  </LineComment>
+  <NewLine Num="1" UId="65" />
+  <Token Text="ELSIF" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="GlobalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="HSsDI" UId="70">
+        <BooleanAttribute Name="HasQuotes" UId="71">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="72" />
+      <Component Name="Requests" UId="73" />
+      <Token Text="." UId="74" />
+      <Component Name="xSeasonWinter" UId="75">
+        <Token Text="[" UId="76" />
+        <Access Scope="LiteralConstant" UId="77">
+          <Constant UId="78">
+            <ConstantValue UId="80">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="81" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="82" />
+  <Token Text="THEN" UId="83" />
+  <NewLine Num="1" UId="84" />
+  <Blank Num="4" UId="85" />
+  <Access Scope="GlobalVariable" UId="86">
+    <Symbol UId="87">
+      <Component Name="BoilerOpModes" UId="88">
+        <BooleanAttribute Name="HasQuotes" UId="89">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="90" />
+      <Component Name="OpModes" UId="91" />
+      <Token Text="." UId="92" />
+      <Component Name="cPreselectedOpModePanel" UId="93">
+        <Token Text="[" UId="94" />
+        <Access Scope="LiteralConstant" UId="95">
+          <Constant UId="96">
+            <ConstantValue UId="98">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="99" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=":=" UId="100" />
+  <Blank Num="1" UId="101" />
+  <Access Scope="LiteralConstant" UId="102">
+    <Constant UId="103">
+      <ConstantValue UId="105">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="106" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="107">
+    <Text UId="108">Winter - Always On</Text>
+  </LineComment>
+  <NewLine Num="1" UId="109" />
+  <Token Text="ELSE" UId="110" />
+  <NewLine Num="1" UId="111" />
+  <Blank Num="4" UId="112" />
+  <Access Scope="GlobalVariable" UId="113">
+    <Symbol UId="114">
+      <Component Name="BoilerOpModes" UId="115">
+        <BooleanAttribute Name="HasQuotes" UId="116">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="117" />
+      <Component Name="OpModes" UId="118" />
+      <Token Text="." UId="119" />
+      <Component Name="cPreselectedOpModePanel" UId="120">
+        <Token Text="[" UId="121" />
+        <Access Scope="LiteralConstant" UId="122">
+          <Constant UId="123">
+            <ConstantValue UId="125">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="126" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="127" />
+  <Token Text=":=" UId="128" />
+  <Blank Num="1" UId="129" />
+  <Access Scope="LiteralConstant" UId="130">
+    <Constant UId="131">
+      <ConstantValue UId="133">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="134" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="135">
+    <Text UId="136">Summer - Off</Text>
+  </LineComment>
+  <NewLine Num="1" UId="137" />
+  <Token Text="END_IF" UId="138" />
+  <Token Text=";" UId="139" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler1 Select from Panel</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="BoilerOpModes" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="OpModes" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="xBoiler2IndividualPanelSwitch" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="31" />
+  <Token Text="THEN" UId="32" />
+  <NewLine Num="1" UId="33" />
+  <Blank Num="4" UId="34" />
+  <Token Text="IF" UId="35" />
+  <Blank Num="1" UId="36" />
+  <Access Scope="GlobalVariable" UId="37">
+    <Symbol UId="38">
+      <Component Name="HSsDI" UId="39">
+        <BooleanAttribute Name="HasQuotes" UId="40">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="41" />
+      <Component Name="Requests" UId="42" />
+      <Token Text="." UId="43" />
+      <Component Name="xSeasonAuto" UId="44">
+        <Token Text="[" UId="45" />
+        <Access Scope="LiteralConstant" UId="46">
+          <Constant UId="47">
+            <ConstantValue UId="49">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="50" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="51" />
+  <Token Text="THEN" UId="52" />
+  <NewLine Num="1" UId="53" />
+  <Blank Num="8" UId="54" />
+  <Access Scope="GlobalVariable" UId="55">
+    <Symbol UId="56">
+      <Component Name="BoilerOpModes" UId="57">
+        <BooleanAttribute Name="HasQuotes" UId="58">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="59" />
+      <Component Name="OpModes" UId="60" />
+      <Token Text="." UId="61" />
+      <Component Name="cPreselectedOpModePanel" UId="62">
+        <Token Text="[" UId="63" />
+        <Access Scope="LiteralConstant" UId="64">
+          <Constant UId="65">
+            <ConstantValue UId="67">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="68" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="69" />
+  <Token Text=":=" UId="70" />
+  <Blank Num="1" UId="71" />
+  <Access Scope="LiteralConstant" UId="72">
+    <Constant UId="73">
+      <ConstantValue UId="75">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="76" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="77">
+    <Text UId="78">Auto</Text>
+  </LineComment>
+  <NewLine Num="1" UId="79" />
+  <Blank Num="4" UId="80" />
+  <Token Text="ELSIF" UId="81" />
+  <Blank Num="1" UId="82" />
+  <Access Scope="GlobalVariable" UId="83">
+    <Symbol UId="84">
+      <Component Name="HSsDI" UId="85">
+        <BooleanAttribute Name="HasQuotes" UId="86">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="87" />
+      <Component Name="Requests" UId="88" />
+      <Token Text="." UId="89" />
+      <Component Name="xSeasonWinter" UId="90">
+        <Token Text="[" UId="91" />
+        <Access Scope="LiteralConstant" UId="92">
+          <Constant UId="93">
+            <ConstantValue UId="95">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="96" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="97" />
+  <Token Text="THEN" UId="98" />
+  <NewLine Num="1" UId="99" />
+  <Blank Num="8" UId="100" />
+  <Access Scope="GlobalVariable" UId="101">
+    <Symbol UId="102">
+      <Component Name="BoilerOpModes" UId="103">
+        <BooleanAttribute Name="HasQuotes" UId="104">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="105" />
+      <Component Name="OpModes" UId="106" />
+      <Token Text="." UId="107" />
+      <Component Name="cPreselectedOpModePanel" UId="108">
+        <Token Text="[" UId="109" />
+        <Access Scope="LiteralConstant" UId="110">
+          <Constant UId="111">
+            <ConstantValue UId="113">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="114" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="115" />
+  <Token Text=":=" UId="116" />
+  <Blank Num="1" UId="117" />
+  <Access Scope="LiteralConstant" UId="118">
+    <Constant UId="119">
+      <ConstantValue UId="121">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="122" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="123">
+    <Text UId="124">Winter - Always On</Text>
+  </LineComment>
+  <NewLine Num="1" UId="125" />
+  <Blank Num="4" UId="126" />
+  <Token Text="ELSE" UId="127" />
+  <NewLine Num="1" UId="128" />
+  <Blank Num="8" UId="129" />
+  <Access Scope="GlobalVariable" UId="130">
+    <Symbol UId="131">
+      <Component Name="BoilerOpModes" UId="132">
+        <BooleanAttribute Name="HasQuotes" UId="133">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="134" />
+      <Component Name="OpModes" UId="135" />
+      <Token Text="." UId="136" />
+      <Component Name="cPreselectedOpModePanel" UId="137">
+        <Token Text="[" UId="138" />
+        <Access Scope="LiteralConstant" UId="139">
+          <Constant UId="140">
+            <ConstantValue UId="142">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="143" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="144" />
+  <Token Text=":=" UId="145" />
+  <Blank Num="1" UId="146" />
+  <Access Scope="LiteralConstant" UId="147">
+    <Constant UId="148">
+      <ConstantValue UId="150">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="151" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="152">
+    <Text UId="153">Summer - Off</Text>
+  </LineComment>
+  <NewLine Num="1" UId="154" />
+  <Blank Num="4" UId="155" />
+  <Token Text="END_IF" UId="156" />
+  <Token Text=";" UId="157" />
+  <NewLine Num="1" UId="158" />
+  <Token Text="ELSE" UId="159" />
+  <NewLine Num="1" UId="160" />
+  <Blank Num="4" UId="161" />
+  <Token Text="IF" UId="162" />
+  <Blank Num="1" UId="163" />
+  <Access Scope="GlobalVariable" UId="164">
+    <Symbol UId="165">
+      <Component Name="HSsDI" UId="166">
+        <BooleanAttribute Name="HasQuotes" UId="167">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="168" />
+      <Component Name="Requests" UId="169" />
+      <Token Text="." UId="170" />
+      <Component Name="xSeasonAuto" UId="171">
+        <Token Text="[" UId="172" />
+        <Access Scope="LiteralConstant" UId="173">
+          <Constant UId="174">
+            <ConstantValue UId="176">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="177" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="178" />
+  <Token Text="THEN" UId="179" />
+  <NewLine Num="1" UId="180" />
+  <Blank Num="8" UId="181" />
+  <Access Scope="GlobalVariable" UId="182">
+    <Symbol UId="183">
+      <Component Name="BoilerOpModes" UId="184">
+        <BooleanAttribute Name="HasQuotes" UId="185">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="186" />
+      <Component Name="OpModes" UId="187" />
+      <Token Text="." UId="188" />
+      <Component Name="cPreselectedOpModePanel" UId="189">
+        <Token Text="[" UId="190" />
+        <Access Scope="LiteralConstant" UId="191">
+          <Constant UId="192">
+            <ConstantValue UId="194">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="195" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="196" />
+  <Token Text=":=" UId="197" />
+  <Blank Num="1" UId="198" />
+  <Access Scope="LiteralConstant" UId="199">
+    <Constant UId="200">
+      <ConstantValue UId="202">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="203" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="204">
+    <Text UId="205">Auto</Text>
+  </LineComment>
+  <NewLine Num="1" UId="206" />
+  <Blank Num="4" UId="207" />
+  <Token Text="ELSIF" UId="208" />
+  <Blank Num="1" UId="209" />
+  <Access Scope="GlobalVariable" UId="210">
+    <Symbol UId="211">
+      <Component Name="HSsDI" UId="212">
+        <BooleanAttribute Name="HasQuotes" UId="213">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="214" />
+      <Component Name="Requests" UId="215" />
+      <Token Text="." UId="216" />
+      <Component Name="xSeasonWinter" UId="217">
+        <Token Text="[" UId="218" />
+        <Access Scope="LiteralConstant" UId="219">
+          <Constant UId="220">
+            <ConstantValue UId="222">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="223" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="224" />
+  <Token Text="THEN" UId="225" />
+  <NewLine Num="1" UId="226" />
+  <Blank Num="8" UId="227" />
+  <Access Scope="GlobalVariable" UId="228">
+    <Symbol UId="229">
+      <Component Name="BoilerOpModes" UId="230">
+        <BooleanAttribute Name="HasQuotes" UId="231">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="232" />
+      <Component Name="OpModes" UId="233" />
+      <Token Text="." UId="234" />
+      <Component Name="cPreselectedOpModePanel" UId="235">
+        <Token Text="[" UId="236" />
+        <Access Scope="LiteralConstant" UId="237">
+          <Constant UId="238">
+            <ConstantValue UId="240">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="241" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="242" />
+  <Token Text=":=" UId="243" />
+  <Blank Num="1" UId="244" />
+  <Access Scope="LiteralConstant" UId="245">
+    <Constant UId="246">
+      <ConstantValue UId="248">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="249" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="250">
+    <Text UId="251">Winter - Always On</Text>
+  </LineComment>
+  <NewLine Num="1" UId="252" />
+  <Blank Num="4" UId="253" />
+  <Token Text="ELSE" UId="254" />
+  <NewLine Num="1" UId="255" />
+  <Blank Num="8" UId="256" />
+  <Access Scope="GlobalVariable" UId="257">
+    <Symbol UId="258">
+      <Component Name="BoilerOpModes" UId="259">
+        <BooleanAttribute Name="HasQuotes" UId="260">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="261" />
+      <Component Name="OpModes" UId="262" />
+      <Token Text="." UId="263" />
+      <Component Name="cPreselectedOpModePanel" UId="264">
+        <Token Text="[" UId="265" />
+        <Access Scope="LiteralConstant" UId="266">
+          <Constant UId="267">
+            <ConstantValue UId="269">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="270" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="271" />
+  <Token Text=":=" UId="272" />
+  <Blank Num="1" UId="273" />
+  <Access Scope="LiteralConstant" UId="274">
+    <Constant UId="275">
+      <ConstantValue UId="277">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="278" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="279">
+    <Text UId="280">Summer - Off</Text>
+  </LineComment>
+  <NewLine Num="1" UId="281" />
+  <Blank Num="4" UId="282" />
+  <Token Text="END_IF" UId="283" />
+  <Token Text=";" UId="284" />
+  <NewLine Num="1" UId="285" />
+  <Token Text="END_IF" UId="286" />
+  <Token Text=";" UId="287" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler2 Select from Panel</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cPreselectedOpModePLC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cReserve" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cPreselectedOpModePanel" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cActual" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="26">
+      <CallInfo Name="BoilerModesCtrlAutoMode" BlockType="FC">
+        <Parameter Name="cPreselectedPLCOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="cSchedulerTargetOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="cPanelSelectorActualMode" Section="Input" Type="Byte" />
+        <Parameter Name="cTargetOpMode" Section="Output" Type="Byte" />
+        <Parameter Name="cActualOpMode" Section="Output" Type="Byte" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="28">
+      <OpenCon UId="27" />
+      <NameCon UId="26" Name="en" />
+    </Wire>
+    <Wire UId="29">
+      <IdentCon UId="21" />
+      <NameCon UId="26" Name="cPreselectedPLCOpMode" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="cSchedulerTargetOpMode" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="cPanelSelectorActualMode" />
+    </Wire>
+    <Wire UId="32">
+      <NameCon UId="26" Name="cTargetOpMode" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="cActualOpMode" />
+      <IdentCon UId="25" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Operation Modes                                                 Unit State
+0=Protection                                                         0=Stopped
+1=Economy                                                           1=Checking-up  
+2=PreComfort                                                       2=Preheating
+3=Comfor                                                              3=Starting 
+4=Auto(Scheduler)                                              4=RecirculatingOperation (Protection)
+                                                                                5=Sustained Mode (Economy setpoints)
+                                                                                6=Sustained Mode (PreComfort setpoints) 
+                                                                                7=Comfort  operation
+                                                                                8=Stopping
+                                                                                9=Blocking
+
+
+
+                                                                                 
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler1 Actual Operation Mode define</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cPreselectedOpModePLC" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cReserve" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cPreselectedOpModePanel" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cActual" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="26">
+      <CallInfo Name="BoilerModesCtrlAutoMode" BlockType="FC">
+        <Parameter Name="cPreselectedPLCOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="cSchedulerTargetOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="cPanelSelectorActualMode" Section="Input" Type="Byte" />
+        <Parameter Name="cTargetOpMode" Section="Output" Type="Byte" />
+        <Parameter Name="cActualOpMode" Section="Output" Type="Byte" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="28">
+      <OpenCon UId="27" />
+      <NameCon UId="26" Name="en" />
+    </Wire>
+    <Wire UId="29">
+      <IdentCon UId="21" />
+      <NameCon UId="26" Name="cPreselectedPLCOpMode" />
+    </Wire>
+    <Wire UId="30">
+      <IdentCon UId="22" />
+      <NameCon UId="26" Name="cSchedulerTargetOpMode" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="23" />
+      <NameCon UId="26" Name="cPanelSelectorActualMode" />
+    </Wire>
+    <Wire UId="32">
+      <NameCon UId="26" Name="cTargetOpMode" />
+      <IdentCon UId="24" />
+    </Wire>
+    <Wire UId="33">
+      <NameCon UId="26" Name="cActualOpMode" />
+      <IdentCon UId="25" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler2 Actual Operation Mode define</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="xB1State" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="THEN" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="32">
+    <Text UId="33"> Вмикаємо котел 1, коли стало достатньо холодно</Text>
+  </LineComment>
+  <NewLine Num="1" UId="34" />
+  <Blank Num="4" UId="35" />
+  <Token Text="IF" UId="36" />
+  <Blank Num="1" UId="37" />
+  <Access Scope="LocalVariable" UId="38">
+    <Symbol UId="39">
+      <Component Name="rOAT" UId="40" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="41" />
+  <Token Text="&lt;=" UId="42" />
+  <Blank Num="1" UId="43" />
+  <Access Scope="LocalVariable" UId="44">
+    <Symbol UId="45">
+      <Component Name="rBoiler1OATOn" UId="46" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="47" />
+  <Token Text="THEN" UId="48" />
+  <NewLine Num="1" UId="49" />
+  <Blank Num="8" UId="50" />
+  <Access Scope="LocalVariable" UId="51">
+    <Symbol UId="52">
+      <Component Name="xB1State" UId="53" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="54" />
+  <Token Text=":=" UId="55" />
+  <Blank Num="1" UId="56" />
+  <Access Scope="LiteralConstant" UId="57">
+    <Constant UId="58">
+      <ConstantValue UId="60">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="61" />
+  <NewLine Num="1" UId="62" />
+  <Blank Num="4" UId="63" />
+  <Token Text="END_IF" UId="64" />
+  <Token Text=";" UId="65" />
+  <NewLine Num="1" UId="66" />
+  <Token Text="ELSE" UId="67" />
+  <NewLine Num="1" UId="68" />
+  <Blank Num="4" UId="69" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="70">
+    <Text UId="71"> Вимикаємо котел 1, коли потеплішало вище абсолютного порогу</Text>
+  </LineComment>
+  <NewLine Num="1" UId="72" />
+  <Blank Num="4" UId="73" />
+  <Token Text="IF" UId="74" />
+  <Blank Num="1" UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="rOAT" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="79" />
+  <Token Text="&gt;=" UId="80" />
+  <Blank Num="1" UId="81" />
+  <Access Scope="LocalVariable" UId="82">
+    <Symbol UId="83">
+      <Component Name="rBoiler1OATOff" UId="84" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="85" />
+  <Token Text="THEN" UId="86" />
+  <NewLine Num="1" UId="87" />
+  <Blank Num="8" UId="88" />
+  <Access Scope="LocalVariable" UId="89">
+    <Symbol UId="90">
+      <Component Name="xB1State" UId="91" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="92" />
+  <Token Text=":=" UId="93" />
+  <Blank Num="1" UId="94" />
+  <Access Scope="LiteralConstant" UId="95">
+    <Constant UId="96">
+      <ConstantValue UId="98">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="99" />
+  <NewLine Num="1" UId="100" />
+  <Blank Num="4" UId="101" />
+  <Token Text="END_IF" UId="102" />
+  <Token Text=";" UId="103" />
+  <NewLine Num="1" UId="104" />
+  <Token Text="END_IF" UId="105" />
+  <Token Text=";" UId="106" />
+  <NewLine Num="2" UId="107" />
+  <Access Scope="LocalVariable" UId="108">
+    <Symbol UId="109">
+      <Component Name="xBoiler1OATRequest" UId="110" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="111" />
+  <Token Text=":=" UId="112" />
+  <Blank Num="1" UId="113" />
+  <Access Scope="LocalVariable" UId="114">
+    <Symbol UId="115">
+      <Component Name="xB1State" UId="116" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="117" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler1 request by OAT</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="xB2Band1State" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="THEN" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <Token Text="IF" UId="32" />
+  <Blank Num="1" UId="33" />
+  <Access Scope="LocalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="rOAT" UId="36" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="37" />
+  <Token Text="&lt;=" UId="38" />
+  <Blank Num="1" UId="39" />
+  <Access Scope="LocalVariable" UId="40">
+    <Symbol UId="41">
+      <Component Name="rBoiler2OAT1On" UId="42" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="43" />
+  <Token Text="THEN" UId="44" />
+  <NewLine Num="1" UId="45" />
+  <Blank Num="8" UId="46" />
+  <Access Scope="LocalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="xB2Band1State" UId="49" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="50" />
+  <Token Text=":=" UId="51" />
+  <Blank Num="1" UId="52" />
+  <Access Scope="LiteralConstant" UId="53">
+    <Constant UId="54">
+      <ConstantValue UId="56">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="57" />
+  <NewLine Num="1" UId="58" />
+  <Blank Num="4" UId="59" />
+  <Token Text="END_IF" UId="60" />
+  <Token Text=";" UId="61" />
+  <NewLine Num="1" UId="62" />
+  <Token Text="ELSE" UId="63" />
+  <NewLine Num="1" UId="64" />
+  <Blank Num="4" UId="65" />
+  <Token Text="IF" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="rOAT" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="71" />
+  <Token Text="&gt;=" UId="72" />
+  <Blank Num="1" UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="rBoiler2OAT1Off" UId="76" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="77" />
+  <Token Text="THEN" UId="78" />
+  <NewLine Num="1" UId="79" />
+  <Blank Num="8" UId="80" />
+  <Access Scope="LocalVariable" UId="81">
+    <Symbol UId="82">
+      <Component Name="xB2Band1State" UId="83" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="84" />
+  <Token Text=":=" UId="85" />
+  <Blank Num="1" UId="86" />
+  <Access Scope="LiteralConstant" UId="87">
+    <Constant UId="88">
+      <ConstantValue UId="90">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="91" />
+  <NewLine Num="1" UId="92" />
+  <Blank Num="4" UId="93" />
+  <Token Text="END_IF" UId="94" />
+  <Token Text=";" UId="95" />
+  <NewLine Num="1" UId="96" />
+  <Token Text="END_IF" UId="97" />
+  <Token Text=";" UId="98" />
+  <NewLine Num="2" UId="99" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="100">
+    <Text UId="101"> Маскуємо Band1, якщо котел 1 вже дозволений (умова "до включення першого котла")</Text>
+  </LineComment>
+  <NewLine Num="1" UId="102" />
+  <Access Scope="LocalVariable" UId="103">
+    <Symbol UId="104">
+      <Component Name="xB2Band1Effective" UId="105" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="106" />
+  <Token Text=":=" UId="107" />
+  <Blank Num="1" UId="108" />
+  <Access Scope="LocalVariable" UId="109">
+    <Symbol UId="110">
+      <Component Name="xB2Band1State" UId="111" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="112" />
+  <Token Text="AND" UId="113" />
+  <Blank Num="1" UId="114" />
+  <Token Text="(" UId="115" />
+  <Token Text="NOT" UId="116" />
+  <Blank Num="1" UId="117" />
+  <Access Scope="LocalVariable" UId="118">
+    <Symbol UId="119">
+      <Component Name="xBoiler1OATRequest" UId="120" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="121" />
+  <Token Text=";" UId="122" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Помірний холод»Помірний холод»: дозволяти лише доти, доки котел 1 ще НЕ увімкнувся.
+// Пороги незалежні й реалізовані абсолютними значеннями</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler2 request by OAT,  OAT range 1</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="IF" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Token Text="NOT" UId="23" />
+  <Blank Num="1" UId="24" />
+  <Access Scope="LocalVariable" UId="25">
+    <Symbol UId="26">
+      <Component Name="xB2Band2State" UId="27" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="28" />
+  <Token Text="THEN" UId="29" />
+  <NewLine Num="1" UId="30" />
+  <Blank Num="4" UId="31" />
+  <Token Text="IF" UId="32" />
+  <Blank Num="1" UId="33" />
+  <Access Scope="LocalVariable" UId="34">
+    <Symbol UId="35">
+      <Component Name="rOAT" UId="36" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="37" />
+  <Token Text="&lt;=" UId="38" />
+  <Blank Num="1" UId="39" />
+  <Access Scope="LocalVariable" UId="40">
+    <Symbol UId="41">
+      <Component Name="rBoiler2OAT2On" UId="42" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="43" />
+  <Token Text="THEN" UId="44" />
+  <NewLine Num="1" UId="45" />
+  <Blank Num="8" UId="46" />
+  <Access Scope="LocalVariable" UId="47">
+    <Symbol UId="48">
+      <Component Name="xB2Band2State" UId="49" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="50" />
+  <Token Text=":=" UId="51" />
+  <Blank Num="1" UId="52" />
+  <Access Scope="LiteralConstant" UId="53">
+    <Constant UId="54">
+      <ConstantValue UId="56">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="57" />
+  <NewLine Num="1" UId="58" />
+  <Blank Num="4" UId="59" />
+  <Token Text="END_IF" UId="60" />
+  <Token Text=";" UId="61" />
+  <NewLine Num="1" UId="62" />
+  <Token Text="ELSE" UId="63" />
+  <NewLine Num="1" UId="64" />
+  <Blank Num="4" UId="65" />
+  <Token Text="IF" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="LocalVariable" UId="68">
+    <Symbol UId="69">
+      <Component Name="rOAT" UId="70" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="71" />
+  <Token Text="&gt;=" UId="72" />
+  <Blank Num="1" UId="73" />
+  <Access Scope="LocalVariable" UId="74">
+    <Symbol UId="75">
+      <Component Name="rBoiler2OAT2Off" UId="76" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="77" />
+  <Token Text="THEN" UId="78" />
+  <NewLine Num="1" UId="79" />
+  <Blank Num="8" UId="80" />
+  <Access Scope="LocalVariable" UId="81">
+    <Symbol UId="82">
+      <Component Name="xB2Band2State" UId="83" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="84" />
+  <Token Text=":=" UId="85" />
+  <Blank Num="1" UId="86" />
+  <Access Scope="LiteralConstant" UId="87">
+    <Constant UId="88">
+      <ConstantValue UId="90">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="91" />
+  <NewLine Num="1" UId="92" />
+  <Blank Num="4" UId="93" />
+  <Token Text="END_IF" UId="94" />
+  <Token Text=";" UId="95" />
+  <NewLine Num="1" UId="96" />
+  <Token Text="END_IF" UId="97" />
+  <Token Text=";" UId="98" />
+  <NewLine Num="2" UId="99" />
+  <Access Scope="LocalVariable" UId="100">
+    <Symbol UId="101">
+      <Component Name="xBoiler2OATRequest" UId="102" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="103" />
+  <Token Text=":=" UId="104" />
+  <Blank Num="1" UId="105" />
+  <Access Scope="LocalVariable" UId="106">
+    <Symbol UId="107">
+      <Component Name="xB2Band2State" UId="108" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="109" />
+  <Token Text="OR" UId="110" />
+  <Blank Num="1" UId="111" />
+  <Access Scope="LocalVariable" UId="112">
+    <Symbol UId="113">
+      <Component Name="xB2Band1Effective" UId="114" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="115" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>«Сильний мороз»: дозволяти незалежно від стану котла 1.</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boiler2 request by OAT,  OAT range 2</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="3C" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cActual" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="xBoiler1OATRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="xBoilerRequestedByAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="BoilerAlarms" />
+        <Component Name="Summary" />
+        <Component Name="BlockingAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="HSsDI" />
+        <Component Name="Requests" />
+        <Component Name="xBoilerReady" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="xBoilerRequestedByAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="28">
+      <CallInfo Name="Boiler_TargetUnitStatesCtrl" BlockType="FC">
+        <Parameter Name="cActualOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="xHeatingActiveByOATRequest" Section="Input" Type="Bool" />
+        <Parameter Name="xHeatingActiveBySecondBoilerAlarm" Section="Input" Type="Bool" />
+        <Parameter Name="xBlockByAlarm" Section="Input" Type="Bool" />
+        <Parameter Name="xIsReady" Section="Input" Type="Bool" />
+        <Parameter Name="cTargetUnitState" Section="Output" Type="Byte" />
+        <Parameter Name="xRequestBackupToAnotherBoiler" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <OpenCon UId="29" />
+      <NameCon UId="28" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="cActualOpMode" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="xHeatingActiveByOATRequest" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="xHeatingActiveBySecondBoilerAlarm" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="xBlockByAlarm" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="25" />
+      <NameCon UId="28" Name="xIsReady" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="28" Name="cTargetUnitState" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="xRequestBackupToAnotherBoiler" />
+      <IdentCon UId="27" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="3D" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="3E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Operation Modes                                                 Unit State
+
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="40" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="41" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boilers1 State define</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="42" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="43" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="GlobalVariable" UId="21">
+      <Symbol>
+        <Component Name="BoilerOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cActual" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="xBoiler2OATRequest" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="xBoilerRequestedByAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="BoilerAlarms" />
+        <Component Name="Summary" />
+        <Component Name="BlockingAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="HSsDI" />
+        <Component Name="Requests" />
+        <Component Name="xBoilerReady" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>2</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="xBoilerRequestedByAlarm" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="28">
+      <CallInfo Name="Boiler_TargetUnitStatesCtrl" BlockType="FC">
+        <Parameter Name="cActualOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="xHeatingActiveByOATRequest" Section="Input" Type="Bool" />
+        <Parameter Name="xHeatingActiveBySecondBoilerAlarm" Section="Input" Type="Bool" />
+        <Parameter Name="xBlockByAlarm" Section="Input" Type="Bool" />
+        <Parameter Name="xIsReady" Section="Input" Type="Bool" />
+        <Parameter Name="cTargetUnitState" Section="Output" Type="Byte" />
+        <Parameter Name="xRequestBackupToAnotherBoiler" Section="Output" Type="Bool" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <OpenCon UId="29" />
+      <NameCon UId="28" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="cActualOpMode" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="xHeatingActiveByOATRequest" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="xHeatingActiveBySecondBoilerAlarm" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="xBlockByAlarm" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="25" />
+      <NameCon UId="28" Name="xIsReady" />
+    </Wire>
+    <Wire UId="36">
+      <NameCon UId="28" Name="cTargetUnitState" />
+      <IdentCon UId="26" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="xRequestBackupToAnotherBoiler" />
+      <IdentCon UId="27" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="44" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="45" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Operation Modes                                                 Unit State
+
+</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="46" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="47" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="48" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Boilers2 State define</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="49" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="4A" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Int</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="22">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HSsDI" />
+        <Component Name="Requests" />
+        <Component Name="xSeasonWinter" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="LiteralConstant" UId="24">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LiteralConstant" UId="25">
+      <Constant>
+        <ConstantType>Byte</ConstantType>
+        <ConstantValue>1</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="BoilerUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="iBoilerSimpleState" AccessModifier="Array">
+          <Access Scope="LiteralConstant">
+            <Constant>
+              <ConstantType>DInt</ConstantType>
+              <ConstantValue>1</ConstantValue>
+            </Constant>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="28">
+      <CallInfo Name="BoilerActualUnitStatesCtrl" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+        <Parameter Name="xManualSummer" Section="Input" Type="Bool" />
+        <Parameter Name="xManualWinter" Section="Input" Type="Bool" />
+        <Parameter Name="cTargetUnitState" Section="Input" Type="Byte" />
+        <Parameter Name="cFromHotToColdDelay" Section="Input" Type="Byte" />
+        <Parameter Name="iUnitStateForHMI" Section="Output" Type="Int" />
+        <Parameter Name="cNextUnitState" Section="InOut" Type="Byte" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <OpenCon UId="29" />
+      <NameCon UId="28" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="21" />
+      <NameCon UId="28" Name="iUnitID" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="28" Name="xManualSummer" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="28" Name="xManualWinter" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="24" />
+      <NameCon UId="28" Name="cTargetUnitState" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="25" />
+      <NameCon UId="28" Name="cFromHotToColdDelay" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="26" />
+      <NameCon UId="28" Name="cNextUnitState" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="28" Name="iUnitStateForHMI" />
+      <IdentCon UId="27" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="4B" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="4C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="4D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="4E" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="4F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Actual Unit State</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="50" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="51" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="52" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="53" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

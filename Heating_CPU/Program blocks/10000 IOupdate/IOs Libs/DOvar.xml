@@ -1,0 +1,1472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="iFuncSystem" Datatype="Byte" Accessibility="Public" />
+    <Member Name="iFuncVar" Datatype="Byte" Accessibility="Public" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="xOutput" Datatype="Bool" Accessibility="Public" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Temp" />
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>DOvar</Name>
+      <Namespace />
+      <Number>10010</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="CASE" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="LocalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="iFuncSystem" UId="25" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="26" />
+  <Token Text="OF" UId="27" />
+  <NewLine Num="1" UId="28" />
+  <Blank Num="4" UId="29" />
+  <Access Scope="LiteralConstant" UId="30">
+    <Constant UId="31">
+      <ConstantValue UId="33">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="34" />
+  <Blank Num="2" UId="35" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="36">
+    <Text UId="37"> Statement section case 2 to 4</Text>
+  </LineComment>
+  <NewLine Num="1" UId="38" />
+  <Blank Num="8" UId="39" />
+  <Token Text=";" UId="40" />
+  <NewLine Num="1" UId="41" />
+  <Blank Num="4" UId="42" />
+  <Access Scope="LiteralConstant" UId="43">
+    <Constant UId="44">
+      <ConstantValue UId="46">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=".." UId="47" />
+  <Access Scope="LiteralConstant" UId="48">
+    <Constant UId="49">
+      <ConstantValue UId="51">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="52" />
+  <Blank Num="2" UId="53" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="54">
+    <Text UId="55"> Statement section case 1</Text>
+  </LineComment>
+  <NewLine Num="1" UId="56" />
+  <Blank Num="8" UId="57" />
+  <Token Text="CASE" UId="58" />
+  <Blank Num="1" UId="59" />
+  <Access Scope="LocalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="iFuncVar" UId="62" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text="OF" UId="64" />
+  <NewLine Num="1" UId="65" />
+  <Blank Num="12" UId="66" />
+  <Access Scope="LiteralConstant" UId="67">
+    <Constant UId="68">
+      <ConstantValue UId="70">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="71" />
+  <Blank Num="2" UId="72" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="73">
+    <Text UId="74"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="75" />
+  <Blank Num="16" UId="76" />
+  <Token Text=";" UId="77" />
+  <NewLine Num="1" UId="78" />
+  <Blank Num="12" UId="79" />
+  <Access Scope="LiteralConstant" UId="80">
+    <Constant UId="81">
+      <ConstantValue UId="83">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="84" />
+  <Blank Num="2" UId="85" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="86">
+    <Text UId="87"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="88" />
+  <Blank Num="16" UId="89" />
+  <Access Scope="LocalVariable" UId="90">
+    <Symbol UId="91">
+      <Component Name="xOutput" UId="92" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="93" />
+  <Token Text=":=" UId="94" />
+  <Blank Num="1" UId="95" />
+  <Access Scope="GlobalVariable" UId="96">
+    <Symbol UId="97">
+      <Component Name="AHUDO" UId="98">
+        <BooleanAttribute Name="HasQuotes" UId="99">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="100" />
+      <Component Name="Requests" UId="101" />
+      <Token Text="." UId="102" />
+      <Component Name="xHeaterPumpCmd" UId="103">
+        <Token Text="[" UId="104" />
+        <Access Scope="LocalVariable" UId="105">
+          <Symbol UId="106">
+            <Component Name="iFuncSystem" UId="107" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="108" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="109" />
+  <NewLine Num="1" UId="110" />
+  <Blank Num="12" UId="111" />
+  <Access Scope="LiteralConstant" UId="112">
+    <Constant UId="113">
+      <ConstantValue UId="115">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="116" />
+  <Blank Num="2" UId="117" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="118">
+    <Text UId="119"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="120" />
+  <Blank Num="16" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="xOutput" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="GlobalVariable" UId="128">
+    <Symbol UId="129">
+      <Component Name="AHUDO" UId="130">
+        <BooleanAttribute Name="HasQuotes" UId="131">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="132" />
+      <Component Name="Requests" UId="133" />
+      <Token Text="." UId="134" />
+      <Component Name="xSAFAnalogEnable" UId="135">
+        <Token Text="[" UId="136" />
+        <Access Scope="LocalVariable" UId="137">
+          <Symbol UId="138">
+            <Component Name="iFuncSystem" UId="139" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="140" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="141" />
+  <NewLine Num="1" UId="142" />
+  <Blank Num="12" UId="143" />
+  <Access Scope="LiteralConstant" UId="144">
+    <Constant UId="145">
+      <ConstantValue UId="147">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="148" />
+  <Blank Num="2" UId="149" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="150">
+    <Text UId="151"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="152" />
+  <Blank Num="16" UId="153" />
+  <Access Scope="LocalVariable" UId="154">
+    <Symbol UId="155">
+      <Component Name="xOutput" UId="156" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="157" />
+  <Token Text=":=" UId="158" />
+  <Blank Num="1" UId="159" />
+  <Access Scope="GlobalVariable" UId="160">
+    <Symbol UId="161">
+      <Component Name="AHUDO" UId="162">
+        <BooleanAttribute Name="HasQuotes" UId="163">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="164" />
+      <Component Name="Requests" UId="165" />
+      <Token Text="." UId="166" />
+      <Component Name="xSAFSp1Cmd" UId="167">
+        <Token Text="[" UId="168" />
+        <Access Scope="LocalVariable" UId="169">
+          <Symbol UId="170">
+            <Component Name="iFuncSystem" UId="171" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="172" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="173" />
+  <NewLine Num="1" UId="174" />
+  <Blank Num="12" UId="175" />
+  <Access Scope="LiteralConstant" UId="176">
+    <Constant UId="177">
+      <ConstantValue UId="179">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="180" />
+  <Blank Num="2" UId="181" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="182">
+    <Text UId="183"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="184" />
+  <Blank Num="16" UId="185" />
+  <Access Scope="LocalVariable" UId="186">
+    <Symbol UId="187">
+      <Component Name="xOutput" UId="188" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="189" />
+  <Token Text=":=" UId="190" />
+  <Blank Num="1" UId="191" />
+  <Access Scope="GlobalVariable" UId="192">
+    <Symbol UId="193">
+      <Component Name="AHUDO" UId="194">
+        <BooleanAttribute Name="HasQuotes" UId="195">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="196" />
+      <Component Name="Requests" UId="197" />
+      <Token Text="." UId="198" />
+      <Component Name="xSAFSp2Cmd" UId="199">
+        <Token Text="[" UId="200" />
+        <Access Scope="LocalVariable" UId="201">
+          <Symbol UId="202">
+            <Component Name="iFuncSystem" UId="203" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="204" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="205" />
+  <NewLine Num="1" UId="206" />
+  <Blank Num="8" UId="207" />
+  <Token Text="END_CASE" UId="208" />
+  <Token Text=";" UId="209" />
+  <NewLine Num="1" UId="210" />
+  <Blank Num="5" UId="211" />
+  <Access Scope="LiteralConstant" UId="212">
+    <Constant UId="213">
+      <ConstantValue UId="215">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=".." UId="216" />
+  <Access Scope="LiteralConstant" UId="217">
+    <Constant UId="218">
+      <ConstantValue UId="220">9</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="221" />
+  <NewLine Num="1" UId="222" />
+  <Blank Num="9" UId="223" />
+  <Token Text=";" UId="224" />
+  <NewLine Num="1" UId="225" />
+  <Blank Num="5" UId="226" />
+  <Access Scope="LiteralConstant" UId="227">
+    <Constant UId="228">
+      <ConstantValue UId="230">10</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="231" />
+  <NewLine Num="1" UId="232" />
+  <Blank Num="9" UId="233" />
+  <Token Text="CASE" UId="234" />
+  <Blank Num="1" UId="235" />
+  <Access Scope="LocalVariable" UId="236">
+    <Symbol UId="237">
+      <Component Name="iFuncVar" UId="238" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="239" />
+  <Token Text="OF" UId="240" />
+  <NewLine Num="1" UId="241" />
+  <Blank Num="13" UId="242" />
+  <Access Scope="LiteralConstant" UId="243">
+    <Constant UId="244">
+      <ConstantValue UId="246">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="247" />
+  <Blank Num="2" UId="248" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="249">
+    <Text UId="250"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="251" />
+  <Blank Num="17" UId="252" />
+  <Token Text=";" UId="253" />
+  <NewLine Num="1" UId="254" />
+  <Blank Num="13" UId="255" />
+  <Access Scope="LiteralConstant" UId="256">
+    <Constant UId="257">
+      <ConstantValue UId="259">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="260" />
+  <Blank Num="2" UId="261" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="262">
+    <Text UId="263"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="264" />
+  <Blank Num="17" UId="265" />
+  <Access Scope="LocalVariable" UId="266">
+    <Symbol UId="267">
+      <Component Name="xOutput" UId="268" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="269" />
+  <Token Text=":=" UId="270" />
+  <Blank Num="1" UId="271" />
+  <Access Scope="GlobalVariable" UId="272">
+    <Symbol UId="273">
+      <Component Name="HCsDO" UId="274">
+        <BooleanAttribute Name="HasQuotes" UId="275">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="276" />
+      <Component Name="Requests" UId="277" />
+      <Token Text="." UId="278" />
+      <Component Name="xHC3wvIncrease" UId="279">
+        <Token Text="[" UId="280" />
+        <Access Scope="LiteralConstant" UId="281">
+          <Constant UId="282">
+            <ConstantValue UId="284">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="285" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="286" />
+  <NewLine Num="1" UId="287" />
+  <Blank Num="13" UId="288" />
+  <Access Scope="LiteralConstant" UId="289">
+    <Constant UId="290">
+      <ConstantValue UId="292">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="293" />
+  <Blank Num="2" UId="294" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="295">
+    <Text UId="296"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="297" />
+  <Blank Num="17" UId="298" />
+  <Access Scope="LocalVariable" UId="299">
+    <Symbol UId="300">
+      <Component Name="xOutput" UId="301" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="302" />
+  <Token Text=":=" UId="303" />
+  <Blank Num="1" UId="304" />
+  <Access Scope="GlobalVariable" UId="305">
+    <Symbol UId="306">
+      <Component Name="HCsDO" UId="307">
+        <BooleanAttribute Name="HasQuotes" UId="308">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="309" />
+      <Component Name="Requests" UId="310" />
+      <Token Text="." UId="311" />
+      <Component Name="xHC3wvDecrease" UId="312">
+        <Token Text="[" UId="313" />
+        <Access Scope="LiteralConstant" UId="314">
+          <Constant UId="315">
+            <ConstantValue UId="317">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="318" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="319" />
+  <NewLine Num="1" UId="320" />
+  <Blank Num="13" UId="321" />
+  <Access Scope="LiteralConstant" UId="322">
+    <Constant UId="323">
+      <ConstantValue UId="325">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="326" />
+  <Blank Num="2" UId="327" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="328">
+    <Text UId="329"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="330" />
+  <Blank Num="17" UId="331" />
+  <Access Scope="LocalVariable" UId="332">
+    <Symbol UId="333">
+      <Component Name="xOutput" UId="334" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="335" />
+  <Token Text=":=" UId="336" />
+  <Blank Num="1" UId="337" />
+  <Access Scope="GlobalVariable" UId="338">
+    <Symbol UId="339">
+      <Component Name="HCsDO" UId="340">
+        <BooleanAttribute Name="HasQuotes" UId="341">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="342" />
+      <Component Name="Requests" UId="343" />
+      <Token Text="." UId="344" />
+      <Component Name="xHC3wvIncrease" UId="345">
+        <Token Text="[" UId="346" />
+        <Access Scope="LiteralConstant" UId="347">
+          <Constant UId="348">
+            <ConstantValue UId="350">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="351" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="352" />
+  <NewLine Num="1" UId="353" />
+  <Blank Num="13" UId="354" />
+  <Access Scope="LiteralConstant" UId="355">
+    <Constant UId="356">
+      <ConstantValue UId="358">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="359" />
+  <Blank Num="2" UId="360" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="361">
+    <Text UId="362"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="363" />
+  <Blank Num="17" UId="364" />
+  <Access Scope="LocalVariable" UId="365">
+    <Symbol UId="366">
+      <Component Name="xOutput" UId="367" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="368" />
+  <Token Text=":=" UId="369" />
+  <Blank Num="1" UId="370" />
+  <Access Scope="GlobalVariable" UId="371">
+    <Symbol UId="372">
+      <Component Name="HCsDO" UId="373">
+        <BooleanAttribute Name="HasQuotes" UId="374">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="375" />
+      <Component Name="Requests" UId="376" />
+      <Token Text="." UId="377" />
+      <Component Name="xHC3wvDecrease" UId="378">
+        <Token Text="[" UId="379" />
+        <Access Scope="LiteralConstant" UId="380">
+          <Constant UId="381">
+            <ConstantValue UId="383">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="384" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="385" />
+  <NewLine Num="1" UId="386" />
+  <Blank Num="13" UId="387" />
+  <Access Scope="LiteralConstant" UId="388">
+    <Constant UId="389">
+      <ConstantValue UId="391">5</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="392" />
+  <Blank Num="2" UId="393" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="394">
+    <Text UId="395" />
+  </LineComment>
+  <NewLine Num="1" UId="396" />
+  <Blank Num="17" UId="397" />
+  <Access Scope="LocalVariable" UId="398">
+    <Symbol UId="399">
+      <Component Name="xOutput" UId="400" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="401" />
+  <Token Text=":=" UId="402" />
+  <Blank Num="1" UId="403" />
+  <Access Scope="GlobalVariable" UId="404">
+    <Symbol UId="405">
+      <Component Name="HCsDO" UId="406">
+        <BooleanAttribute Name="HasQuotes" UId="407">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="408" />
+      <Component Name="Requests" UId="409" />
+      <Token Text="." UId="410" />
+      <Component Name="xHCPump1Cmd" UId="411">
+        <Token Text="[" UId="412" />
+        <Access Scope="LiteralConstant" UId="413">
+          <Constant UId="414">
+            <ConstantValue UId="416">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="417" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="418" />
+  <NewLine Num="1" UId="419" />
+  <Blank Num="13" UId="420" />
+  <Access Scope="LiteralConstant" UId="421">
+    <Constant UId="422">
+      <ConstantValue UId="424">6</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="425" />
+  <Blank Num="2" UId="426" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="427">
+    <Text UId="428" />
+  </LineComment>
+  <NewLine Num="1" UId="429" />
+  <Blank Num="17" UId="430" />
+  <Access Scope="LocalVariable" UId="431">
+    <Symbol UId="432">
+      <Component Name="xOutput" UId="433" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="434" />
+  <Token Text=":=" UId="435" />
+  <Blank Num="1" UId="436" />
+  <Access Scope="GlobalVariable" UId="437">
+    <Symbol UId="438">
+      <Component Name="HCsDO" UId="439">
+        <BooleanAttribute Name="HasQuotes" UId="440">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="441" />
+      <Component Name="Requests" UId="442" />
+      <Token Text="." UId="443" />
+      <Component Name="xHCPump2Cmd" UId="444">
+        <Token Text="[" UId="445" />
+        <Access Scope="LiteralConstant" UId="446">
+          <Constant UId="447">
+            <ConstantValue UId="449">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="450" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="451" />
+  <NewLine Num="1" UId="452" />
+  <Blank Num="13" UId="453" />
+  <Access Scope="LiteralConstant" UId="454">
+    <Constant UId="455">
+      <ConstantValue UId="457">7</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="458" />
+  <Blank Num="2" UId="459" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="460">
+    <Text UId="461" />
+  </LineComment>
+  <NewLine Num="1" UId="462" />
+  <Blank Num="17" UId="463" />
+  <Access Scope="LocalVariable" UId="464">
+    <Symbol UId="465">
+      <Component Name="xOutput" UId="466" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="467" />
+  <Token Text=":=" UId="468" />
+  <Blank Num="1" UId="469" />
+  <Access Scope="GlobalVariable" UId="470">
+    <Symbol UId="471">
+      <Component Name="HCsDO" UId="472">
+        <BooleanAttribute Name="HasQuotes" UId="473">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="474" />
+      <Component Name="Requests" UId="475" />
+      <Token Text="." UId="476" />
+      <Component Name="xHCPump1Cmd" UId="477">
+        <Token Text="[" UId="478" />
+        <Access Scope="LiteralConstant" UId="479">
+          <Constant UId="480">
+            <ConstantValue UId="482">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="483" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="484" />
+  <NewLine Num="1" UId="485" />
+  <Blank Num="13" UId="486" />
+  <Access Scope="LiteralConstant" UId="487">
+    <Constant UId="488">
+      <ConstantValue UId="490">8</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="491" />
+  <Blank Num="2" UId="492" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="493">
+    <Text UId="494" />
+  </LineComment>
+  <NewLine Num="1" UId="495" />
+  <Blank Num="17" UId="496" />
+  <Access Scope="LocalVariable" UId="497">
+    <Symbol UId="498">
+      <Component Name="xOutput" UId="499" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="500" />
+  <Token Text=":=" UId="501" />
+  <Blank Num="1" UId="502" />
+  <Access Scope="GlobalVariable" UId="503">
+    <Symbol UId="504">
+      <Component Name="HCsDO" UId="505">
+        <BooleanAttribute Name="HasQuotes" UId="506">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="507" />
+      <Component Name="Requests" UId="508" />
+      <Token Text="." UId="509" />
+      <Component Name="xHCPump2Cmd" UId="510">
+        <Token Text="[" UId="511" />
+        <Access Scope="LiteralConstant" UId="512">
+          <Constant UId="513">
+            <ConstantValue UId="515">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="516" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="517" />
+  <NewLine Num="1" UId="518" />
+  <Blank Num="13" UId="519" />
+  <Access Scope="LiteralConstant" UId="520">
+    <Constant UId="521">
+      <ConstantValue UId="523">9</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="524" />
+  <Blank Num="2" UId="525" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="526">
+    <Text UId="527">    </Text>
+  </LineComment>
+  <NewLine Num="1" UId="528" />
+  <Blank Num="17" UId="529" />
+  <Token Text=";" UId="530" />
+  <NewLine Num="1" UId="531" />
+  <Blank Num="13" UId="532" />
+  <Access Scope="LiteralConstant" UId="533">
+    <Constant UId="534">
+      <ConstantValue UId="536">10</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="537" />
+  <NewLine Num="1" UId="538" />
+  <Blank Num="17" UId="539" />
+  <Access Scope="LocalVariable" UId="540">
+    <Symbol UId="541">
+      <Component Name="xOutput" UId="542" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="543" />
+  <Token Text=":=" UId="544" />
+  <Blank Num="1" UId="545" />
+  <Access Scope="GlobalVariable" UId="546">
+    <Symbol UId="547">
+      <Component Name="HSsDO" UId="548">
+        <BooleanAttribute Name="HasQuotes" UId="549">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="550" />
+      <Component Name="Requests" UId="551" />
+      <Token Text="." UId="552" />
+      <Component Name="xBoilerEnable" UId="553">
+        <Token Text="[" UId="554" />
+        <Access Scope="LiteralConstant" UId="555">
+          <Constant UId="556">
+            <ConstantValue UId="558">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="559" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="560" />
+  <NewLine Num="1" UId="561" />
+  <Blank Num="13" UId="562" />
+  <Access Scope="LiteralConstant" UId="563">
+    <Constant UId="564">
+      <ConstantValue UId="566">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="567" />
+  <NewLine Num="1" UId="568" />
+  <Blank Num="17" UId="569" />
+  <Access Scope="LocalVariable" UId="570">
+    <Symbol UId="571">
+      <Component Name="xOutput" UId="572" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="573" />
+  <Token Text=":=" UId="574" />
+  <Blank Num="1" UId="575" />
+  <Access Scope="GlobalVariable" UId="576">
+    <Symbol UId="577">
+      <Component Name="HSsDO" UId="578">
+        <BooleanAttribute Name="HasQuotes" UId="579">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="580" />
+      <Component Name="Requests" UId="581" />
+      <Token Text="." UId="582" />
+      <Component Name="xBoilerSt1Enable" UId="583">
+        <Token Text="[" UId="584" />
+        <Access Scope="LiteralConstant" UId="585">
+          <Constant UId="586">
+            <ConstantValue UId="588">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="589" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="590" />
+  <NewLine Num="1" UId="591" />
+  <Blank Num="13" UId="592" />
+  <Access Scope="LiteralConstant" UId="593">
+    <Constant UId="594">
+      <ConstantValue UId="596">12</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="597" />
+  <NewLine Num="1" UId="598" />
+  <Blank Num="17" UId="599" />
+  <Access Scope="LocalVariable" UId="600">
+    <Symbol UId="601">
+      <Component Name="xOutput" UId="602" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="603" />
+  <Token Text=":=" UId="604" />
+  <Blank Num="1" UId="605" />
+  <Access Scope="GlobalVariable" UId="606">
+    <Symbol UId="607">
+      <Component Name="HSsDO" UId="608">
+        <BooleanAttribute Name="HasQuotes" UId="609">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="610" />
+      <Component Name="Requests" UId="611" />
+      <Token Text="." UId="612" />
+      <Component Name="xBoilerSt2Enable" UId="613">
+        <Token Text="[" UId="614" />
+        <Access Scope="LiteralConstant" UId="615">
+          <Constant UId="616">
+            <ConstantValue UId="618">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="619" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="620" />
+  <NewLine Num="1" UId="621" />
+  <Blank Num="13" UId="622" />
+  <Access Scope="LiteralConstant" UId="623">
+    <Constant UId="624">
+      <ConstantValue UId="626">13</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="627" />
+  <NewLine Num="1" UId="628" />
+  <Blank Num="17" UId="629" />
+  <Access Scope="LocalVariable" UId="630">
+    <Symbol UId="631">
+      <Component Name="xOutput" UId="632" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="633" />
+  <Token Text=":=" UId="634" />
+  <Blank Num="1" UId="635" />
+  <Access Scope="GlobalVariable" UId="636">
+    <Symbol UId="637">
+      <Component Name="HSsDO" UId="638">
+        <BooleanAttribute Name="HasQuotes" UId="639">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="640" />
+      <Component Name="Requests" UId="641" />
+      <Token Text="." UId="642" />
+      <Component Name="xBoilerShuntPumpEnable" UId="643">
+        <Token Text="[" UId="644" />
+        <Access Scope="LiteralConstant" UId="645">
+          <Constant UId="646">
+            <ConstantValue UId="648">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="649" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="650" />
+  <NewLine Num="1" UId="651" />
+  <Blank Num="13" UId="652" />
+  <Access Scope="LiteralConstant" UId="653">
+    <Constant UId="654">
+      <ConstantValue UId="656">14</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="657" />
+  <NewLine Num="1" UId="658" />
+  <Blank Num="17" UId="659" />
+  <Access Scope="LocalVariable" UId="660">
+    <Symbol UId="661">
+      <Component Name="xOutput" UId="662" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="663" />
+  <Token Text=":=" UId="664" />
+  <Blank Num="1" UId="665" />
+  <Access Scope="GlobalVariable" UId="666">
+    <Symbol UId="667">
+      <Component Name="HSsDO" UId="668">
+        <BooleanAttribute Name="HasQuotes" UId="669">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="670" />
+      <Component Name="Requests" UId="671" />
+      <Token Text="." UId="672" />
+      <Component Name="xBoilerShutOffValveCmd" UId="673">
+        <Token Text="[" UId="674" />
+        <Access Scope="LiteralConstant" UId="675">
+          <Constant UId="676">
+            <ConstantValue UId="678">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="679" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="680" />
+  <NewLine Num="1" UId="681" />
+  <Blank Num="13" UId="682" />
+  <Access Scope="LiteralConstant" UId="683">
+    <Constant UId="684">
+      <ConstantValue UId="686">15</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="687" />
+  <NewLine Num="1" UId="688" />
+  <Blank Num="17" UId="689" />
+  <Token Text=";" UId="690" />
+  <NewLine Num="1" UId="691" />
+  <Blank Num="13" UId="692" />
+  <Access Scope="LiteralConstant" UId="693">
+    <Constant UId="694">
+      <ConstantValue UId="696">16</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="697" />
+  <NewLine Num="1" UId="698" />
+  <Blank Num="17" UId="699" />
+  <Access Scope="LocalVariable" UId="700">
+    <Symbol UId="701">
+      <Component Name="xOutput" UId="702" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="703" />
+  <Token Text=":=" UId="704" />
+  <Blank Num="1" UId="705" />
+  <Access Scope="GlobalVariable" UId="706">
+    <Symbol UId="707">
+      <Component Name="HSsDO" UId="708">
+        <BooleanAttribute Name="HasQuotes" UId="709">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="710" />
+      <Component Name="Requests" UId="711" />
+      <Token Text="." UId="712" />
+      <Component Name="xBoilerEnable" UId="713">
+        <Token Text="[" UId="714" />
+        <Access Scope="LiteralConstant" UId="715">
+          <Constant UId="716">
+            <ConstantValue UId="718">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="719" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="720" />
+  <NewLine Num="1" UId="721" />
+  <Blank Num="13" UId="722" />
+  <Access Scope="LiteralConstant" UId="723">
+    <Constant UId="724">
+      <ConstantValue UId="726">17</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="727" />
+  <NewLine Num="1" UId="728" />
+  <Blank Num="17" UId="729" />
+  <Access Scope="LocalVariable" UId="730">
+    <Symbol UId="731">
+      <Component Name="xOutput" UId="732" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="733" />
+  <Token Text=":=" UId="734" />
+  <Blank Num="1" UId="735" />
+  <Access Scope="GlobalVariable" UId="736">
+    <Symbol UId="737">
+      <Component Name="HSsDO" UId="738">
+        <BooleanAttribute Name="HasQuotes" UId="739">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="740" />
+      <Component Name="Requests" UId="741" />
+      <Token Text="." UId="742" />
+      <Component Name="xBoilerSt1Enable" UId="743">
+        <Token Text="[" UId="744" />
+        <Access Scope="LiteralConstant" UId="745">
+          <Constant UId="746">
+            <ConstantValue UId="748">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="749" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="750" />
+  <NewLine Num="1" UId="751" />
+  <Blank Num="13" UId="752" />
+  <Access Scope="LiteralConstant" UId="753">
+    <Constant UId="754">
+      <ConstantValue UId="756">18</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="757" />
+  <NewLine Num="1" UId="758" />
+  <Blank Num="17" UId="759" />
+  <Access Scope="LocalVariable" UId="760">
+    <Symbol UId="761">
+      <Component Name="xOutput" UId="762" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="763" />
+  <Token Text=":=" UId="764" />
+  <Blank Num="1" UId="765" />
+  <Access Scope="GlobalVariable" UId="766">
+    <Symbol UId="767">
+      <Component Name="HSsDO" UId="768">
+        <BooleanAttribute Name="HasQuotes" UId="769">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="770" />
+      <Component Name="Requests" UId="771" />
+      <Token Text="." UId="772" />
+      <Component Name="xBoilerSt2Enable" UId="773">
+        <Token Text="[" UId="774" />
+        <Access Scope="LiteralConstant" UId="775">
+          <Constant UId="776">
+            <ConstantValue UId="778">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="779" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="780" />
+  <NewLine Num="1" UId="781" />
+  <Blank Num="13" UId="782" />
+  <Access Scope="LiteralConstant" UId="783">
+    <Constant UId="784">
+      <ConstantValue UId="786">19</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="787" />
+  <NewLine Num="1" UId="788" />
+  <Blank Num="17" UId="789" />
+  <Access Scope="LocalVariable" UId="790">
+    <Symbol UId="791">
+      <Component Name="xOutput" UId="792" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="793" />
+  <Token Text=":=" UId="794" />
+  <Blank Num="1" UId="795" />
+  <Access Scope="GlobalVariable" UId="796">
+    <Symbol UId="797">
+      <Component Name="HSsDO" UId="798">
+        <BooleanAttribute Name="HasQuotes" UId="799">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="800" />
+      <Component Name="Requests" UId="801" />
+      <Token Text="." UId="802" />
+      <Component Name="xBoilerShuntPumpEnable" UId="803">
+        <Token Text="[" UId="804" />
+        <Access Scope="LiteralConstant" UId="805">
+          <Constant UId="806">
+            <ConstantValue UId="808">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="809" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="810" />
+  <NewLine Num="1" UId="811" />
+  <Blank Num="13" UId="812" />
+  <Access Scope="LiteralConstant" UId="813">
+    <Constant UId="814">
+      <ConstantValue UId="816">20</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="817" />
+  <NewLine Num="1" UId="818" />
+  <Blank Num="17" UId="819" />
+  <Access Scope="LocalVariable" UId="820">
+    <Symbol UId="821">
+      <Component Name="xOutput" UId="822" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="823" />
+  <Token Text=":=" UId="824" />
+  <Blank Num="1" UId="825" />
+  <Access Scope="GlobalVariable" UId="826">
+    <Symbol UId="827">
+      <Component Name="HSsDO" UId="828">
+        <BooleanAttribute Name="HasQuotes" UId="829">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="830" />
+      <Component Name="Requests" UId="831" />
+      <Token Text="." UId="832" />
+      <Component Name="xBoilerShutOffValveCmd" UId="833">
+        <Token Text="[" UId="834" />
+        <Access Scope="LiteralConstant" UId="835">
+          <Constant UId="836">
+            <ConstantValue UId="838">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="839" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="840" />
+  <NewLine Num="1" UId="841" />
+  <Blank Num="13" UId="842" />
+  <Token Text="ELSE" UId="843" />
+  <Token Text=":" UId="844" />
+  <NewLine Num="1" UId="845" />
+  <Blank Num="17" UId="846" />
+  <Token Text=";" UId="847" />
+  <NewLine Num="1" UId="848" />
+  <Blank Num="9" UId="849" />
+  <Token Text="END_CASE" UId="850" />
+  <Token Text=";" UId="851" />
+  <NewLine Num="1" UId="852" />
+  <Blank Num="5" UId="853" />
+  <Access Scope="LiteralConstant" UId="854">
+    <Constant UId="855">
+      <ConstantValue UId="857">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=".." UId="858" />
+  <Access Scope="LiteralConstant" UId="859">
+    <Constant UId="860">
+      <ConstantValue UId="862">99</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="863" />
+  <NewLine Num="1" UId="864" />
+  <Blank Num="9" UId="865" />
+  <Token Text=";" UId="866" />
+  <NewLine Num="1" UId="867" />
+  <Blank Num="5" UId="868" />
+  <Access Scope="LiteralConstant" UId="869">
+    <Constant UId="870">
+      <ConstantValue UId="872">100</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="873" />
+  <Blank Num="4" UId="874" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="875">
+    <Text UId="876">DieselLine</Text>
+  </LineComment>
+  <NewLine Num="1" UId="877" />
+  <Blank Num="9" UId="878" />
+  <Token Text="CASE" UId="879" />
+  <Blank Num="1" UId="880" />
+  <Access Scope="LocalVariable" UId="881">
+    <Symbol UId="882">
+      <Component Name="iFuncVar" UId="883" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="884" />
+  <Token Text="OF" UId="885" />
+  <NewLine Num="1" UId="886" />
+  <Blank Num="13" UId="887" />
+  <Access Scope="LiteralConstant" UId="888">
+    <Constant UId="889">
+      <ConstantValue UId="891">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="892" />
+  <Blank Num="2" UId="893" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="894">
+    <Text UId="895"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="896" />
+  <Blank Num="17" UId="897" />
+  <Token Text=";" UId="898" />
+  <NewLine Num="1" UId="899" />
+  <Blank Num="13" UId="900" />
+  <Access Scope="LiteralConstant" UId="901">
+    <Constant UId="902">
+      <ConstantValue UId="904">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="905" />
+  <Blank Num="2" UId="906" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="907">
+    <Text UId="908"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="909" />
+  <Blank Num="17" UId="910" />
+  <Access Scope="LocalVariable" UId="911">
+    <Symbol UId="912">
+      <Component Name="xOutput" UId="913" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="914" />
+  <Token Text=":=" UId="915" />
+  <Blank Num="1" UId="916" />
+  <Access Scope="GlobalVariable" UId="917">
+    <Symbol UId="918">
+      <Component Name="DLsDO" UId="919">
+        <BooleanAttribute Name="HasQuotes" UId="920">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="921" />
+      <Component Name="Requests" UId="922" />
+      <Token Text="." UId="923" />
+      <Component Name="xDieselLineHeatingCmd" UId="924">
+        <Token Text="[" UId="925" />
+        <Access Scope="LiteralConstant" UId="926">
+          <Constant UId="927">
+            <ConstantValue UId="929">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="930" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="931" />
+  <NewLine Num="1" UId="932" />
+  <Blank Num="13" UId="933" />
+  <Access Scope="LiteralConstant" UId="934">
+    <Constant UId="935">
+      <ConstantValue UId="937">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="938" />
+  <Blank Num="2" UId="939" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="940">
+    <Text UId="941"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="942" />
+  <Blank Num="17" UId="943" />
+  <Access Scope="LocalVariable" UId="944">
+    <Symbol UId="945">
+      <Component Name="xOutput" UId="946" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="947" />
+  <Token Text=":=" UId="948" />
+  <Blank Num="1" UId="949" />
+  <Access Scope="GlobalVariable" UId="950">
+    <Symbol UId="951">
+      <Component Name="DLsDO" UId="952">
+        <BooleanAttribute Name="HasQuotes" UId="953">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="954" />
+      <Component Name="Requests" UId="955" />
+      <Token Text="." UId="956" />
+      <Component Name="xDieselLineHeatingCmd" UId="957">
+        <Token Text="[" UId="958" />
+        <Access Scope="LiteralConstant" UId="959">
+          <Constant UId="960">
+            <ConstantValue UId="962">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="963" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="964" />
+  <NewLine Num="1" UId="965" />
+  <Blank Num="13" UId="966" />
+  <Access Scope="LiteralConstant" UId="967">
+    <Constant UId="968">
+      <ConstantValue UId="970">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="971" />
+  <Blank Num="2" UId="972" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="973">
+    <Text UId="974"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="975" />
+  <Blank Num="17" UId="976" />
+  <Access Scope="LocalVariable" UId="977">
+    <Symbol UId="978">
+      <Component Name="xOutput" UId="979" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="980" />
+  <Token Text=":=" UId="981" />
+  <Blank Num="1" UId="982" />
+  <Access Scope="GlobalVariable" UId="983">
+    <Symbol UId="984">
+      <Component Name="DLsDO" UId="985">
+        <BooleanAttribute Name="HasQuotes" UId="986">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="987" />
+      <Component Name="Requests" UId="988" />
+      <Token Text="." UId="989" />
+      <Component Name="xDieselLinePumpEnable" UId="990" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="991" />
+  <NewLine Num="1" UId="992" />
+  <Blank Num="13" UId="993" />
+  <Access Scope="LiteralConstant" UId="994">
+    <Constant UId="995">
+      <ConstantValue UId="997">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="998" />
+  <Blank Num="2" UId="999" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1000">
+    <Text UId="1001"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="1002" />
+  <Blank Num="17" UId="1003" />
+  <Access Scope="LocalVariable" UId="1004">
+    <Symbol UId="1005">
+      <Component Name="xOutput" UId="1006" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1007" />
+  <Token Text=":=" UId="1008" />
+  <Blank Num="1" UId="1009" />
+  <Access Scope="GlobalVariable" UId="1010">
+    <Symbol UId="1011">
+      <Component Name="DLsDO" UId="1012">
+        <BooleanAttribute Name="HasQuotes" UId="1013">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1014" />
+      <Component Name="Requests" UId="1015" />
+      <Token Text="." UId="1016" />
+      <Component Name="xDieselLinePumpSelect" UId="1017" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1018" />
+  <NewLine Num="1" UId="1019" />
+  <Blank Num="13" UId="1020" />
+  <Access Scope="LiteralConstant" UId="1021">
+    <Constant UId="1022">
+      <ConstantValue UId="1024">5</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="1025" />
+  <Blank Num="2" UId="1026" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1027">
+    <Text UId="1028" />
+  </LineComment>
+  <NewLine Num="1" UId="1029" />
+  <Blank Num="17" UId="1030" />
+  <Access Scope="LocalVariable" UId="1031">
+    <Symbol UId="1032">
+      <Component Name="xOutput" UId="1033" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1034" />
+  <Token Text=":=" UId="1035" />
+  <Blank Num="1" UId="1036" />
+  <Access Scope="GlobalVariable" UId="1037">
+    <Symbol UId="1038">
+      <Component Name="DLsDO" UId="1039">
+        <BooleanAttribute Name="HasQuotes" UId="1040">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1041" />
+      <Component Name="Requests" UId="1042" />
+      <Token Text="." UId="1043" />
+      <Component Name="xDieselLineDayTankValve" UId="1044">
+        <Token Text="[" UId="1045" />
+        <Access Scope="LiteralConstant" UId="1046">
+          <Constant UId="1047">
+            <ConstantValue UId="1049">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1050" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1051" />
+  <NewLine Num="1" UId="1052" />
+  <Blank Num="13" UId="1053" />
+  <Access Scope="LiteralConstant" UId="1054">
+    <Constant UId="1055">
+      <ConstantValue UId="1057">6</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="1058" />
+  <Blank Num="2" UId="1059" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1060">
+    <Text UId="1061" />
+  </LineComment>
+  <NewLine Num="1" UId="1062" />
+  <Blank Num="17" UId="1063" />
+  <Access Scope="LocalVariable" UId="1064">
+    <Symbol UId="1065">
+      <Component Name="xOutput" UId="1066" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="1067" />
+  <Token Text=":=" UId="1068" />
+  <Blank Num="1" UId="1069" />
+  <Access Scope="GlobalVariable" UId="1070">
+    <Symbol UId="1071">
+      <Component Name="DLsDO" UId="1072">
+        <BooleanAttribute Name="HasQuotes" UId="1073">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="1074" />
+      <Component Name="Requests" UId="1075" />
+      <Token Text="." UId="1076" />
+      <Component Name="xDieselLineDayTankValve" UId="1077">
+        <Token Text="[" UId="1078" />
+        <Access Scope="LiteralConstant" UId="1079">
+          <Constant UId="1080">
+            <ConstantValue UId="1082">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="1083" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="1084" />
+  <NewLine Num="1" UId="1085" />
+  <Blank Num="13" UId="1086" />
+  <Token Text="ELSE" UId="1087" />
+  <Token Text=":" UId="1088" />
+  <NewLine Num="1" UId="1089" />
+  <Blank Num="17" UId="1090" />
+  <Token Text=";" UId="1091" />
+  <NewLine Num="1" UId="1092" />
+  <Blank Num="9" UId="1093" />
+  <Token Text="END_CASE" UId="1094" />
+  <Token Text=";" UId="1095" />
+  <NewLine Num="1" UId="1096" />
+  <Blank Num="4" UId="1097" />
+  <Token Text="ELSE" UId="1098" />
+  <Blank Num="2" UId="1099" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="1100">
+    <Text UId="1101"> Statement section ELSE</Text>
+  </LineComment>
+  <NewLine Num="1" UId="1102" />
+  <Blank Num="8" UId="1103" />
+  <Token Text=";" UId="1104" />
+  <NewLine Num="1" UId="1105" />
+  <Token Text="END_CASE" UId="1106" />
+  <Token Text=";" UId="1107" />
+  <NewLine Num="1" UId="1108" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="B" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="C" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="D" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

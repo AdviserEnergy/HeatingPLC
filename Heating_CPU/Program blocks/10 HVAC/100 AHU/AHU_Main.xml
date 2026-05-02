@@ -1,0 +1,586 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="iUnitID" Datatype="Int" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-US">1=AHUFood, 2=AHUNonFood</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="FA_temp" Datatype="Real" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>AHU_Main</Name>
+      <Namespace />
+      <Number>100</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="CASE" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="AHUAI" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="AI" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="cRoomTempSelect" UId="30">
+        <Token Text="[" UId="31" />
+        <Access Scope="LocalVariable" UId="32">
+          <Symbol UId="33">
+            <Component Name="iUnitID" UId="34" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="35" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="36" />
+  <Token Text="OF" UId="37" />
+  <NewLine Num="1" UId="38" />
+  <Blank Num="4" UId="39" />
+  <Access Scope="LiteralConstant" UId="40">
+    <Constant UId="41">
+      <ConstantValue UId="43">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="44" />
+  <Blank Num="2" UId="45" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="46">
+    <Text UId="47"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="48" />
+  <Blank Num="8" UId="49" />
+  <Access Scope="GlobalVariable" UId="50">
+    <Symbol UId="51">
+      <Component Name="AHUAI" UId="52">
+        <BooleanAttribute Name="HasQuotes" UId="53">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="54" />
+      <Component Name="AI" UId="55" />
+      <Token Text="." UId="56" />
+      <Component Name="rRoomAirTemp_Actual" UId="57">
+        <Token Text="[" UId="58" />
+        <Access Scope="LocalVariable" UId="59">
+          <Symbol UId="60">
+            <Component Name="iUnitID" UId="61" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="62" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text=":=" UId="64" />
+  <Blank Num="1" UId="65" />
+  <Access Scope="GlobalVariable" UId="66">
+    <Symbol UId="67">
+      <Component Name="AHUAI" UId="68">
+        <BooleanAttribute Name="HasQuotes" UId="69">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="70" />
+      <Component Name="AI" UId="71" />
+      <Token Text="." UId="72" />
+      <Component Name="rRoomAirTemp_PLC_AI" UId="73">
+        <Token Text="[" UId="74" />
+        <Access Scope="LocalVariable" UId="75">
+          <Symbol UId="76">
+            <Component Name="iUnitID" UId="77" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="78" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="79" />
+  <NewLine Num="1" UId="80" />
+  <Blank Num="4" UId="81" />
+  <Access Scope="LiteralConstant" UId="82">
+    <Constant UId="83">
+      <ConstantValue UId="85">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="86" />
+  <Blank Num="2" UId="87" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="88">
+    <Text UId="89"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="90" />
+  <Blank Num="8" UId="91" />
+  <Access Scope="GlobalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="AHUAI" UId="94">
+        <BooleanAttribute Name="HasQuotes" UId="95">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="96" />
+      <Component Name="AI" UId="97" />
+      <Token Text="." UId="98" />
+      <Component Name="rRoomAirTemp_Actual" UId="99">
+        <Token Text="[" UId="100" />
+        <Access Scope="LocalVariable" UId="101">
+          <Symbol UId="102">
+            <Component Name="iUnitID" UId="103" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="104" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text=":=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="GlobalVariable" UId="108">
+    <Symbol UId="109">
+      <Component Name="AHUAI" UId="110">
+        <BooleanAttribute Name="HasQuotes" UId="111">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="112" />
+      <Component Name="AI" UId="113" />
+      <Token Text="." UId="114" />
+      <Component Name="rRoomAirTemp_LoraAvg" UId="115">
+        <Token Text="[" UId="116" />
+        <Access Scope="LocalVariable" UId="117">
+          <Symbol UId="118">
+            <Component Name="iUnitID" UId="119" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="120" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="121" />
+  <NewLine Num="1" UId="122" />
+  <Blank Num="4" UId="123" />
+  <Access Scope="LiteralConstant" UId="124">
+    <Constant UId="125">
+      <ConstantValue UId="127">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="128" />
+  <Blank Num="1" UId="129" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="130">
+    <Text UId="131"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="132" />
+  <Blank Num="8" UId="133" />
+  <Access Scope="GlobalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="AHUAI" UId="136">
+        <BooleanAttribute Name="HasQuotes" UId="137">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="138" />
+      <Component Name="AI" UId="139" />
+      <Token Text="." UId="140" />
+      <Component Name="rRoomAirTemp_Actual" UId="141">
+        <Token Text="[" UId="142" />
+        <Access Scope="LocalVariable" UId="143">
+          <Symbol UId="144">
+            <Component Name="iUnitID" UId="145" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="146" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="147" />
+  <Token Text=":=" UId="148" />
+  <Blank Num="1" UId="149" />
+  <Access Scope="GlobalVariable" UId="150">
+    <Symbol UId="151">
+      <Component Name="AHUAI" UId="152">
+        <BooleanAttribute Name="HasQuotes" UId="153">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="154" />
+      <Component Name="AI" UId="155" />
+      <Token Text="." UId="156" />
+      <Component Name="rRoomAirTemp_MSensor" UId="157">
+        <Token Text="[" UId="158" />
+        <Access Scope="LocalVariable" UId="159">
+          <Symbol UId="160">
+            <Component Name="iUnitID" UId="161" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="162" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="163" />
+  <NewLine Num="1" UId="164" />
+  <Blank Num="4" UId="165" />
+  <Token Text="ELSE" UId="166" />
+  <NewLine Num="1" UId="167" />
+  <Blank Num="8" UId="168" />
+  <Access Scope="GlobalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="AHUAI" UId="171">
+        <BooleanAttribute Name="HasQuotes" UId="172">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="173" />
+      <Component Name="AI" UId="174" />
+      <Token Text="." UId="175" />
+      <Component Name="rRoomAirTemp_Actual" UId="176">
+        <Token Text="[" UId="177" />
+        <Access Scope="LocalVariable" UId="178">
+          <Symbol UId="179">
+            <Component Name="iUnitID" UId="180" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="181" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="182" />
+  <Token Text=":=" UId="183" />
+  <Blank Num="1" UId="184" />
+  <Access Scope="GlobalVariable" UId="185">
+    <Symbol UId="186">
+      <Component Name="AHUAI" UId="187">
+        <BooleanAttribute Name="HasQuotes" UId="188">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="189" />
+      <Component Name="AI" UId="190" />
+      <Token Text="." UId="191" />
+      <Component Name="rRoomAirTemp_PLC_AI" UId="192">
+        <Token Text="[" UId="193" />
+        <Access Scope="LocalVariable" UId="194">
+          <Symbol UId="195">
+            <Component Name="iUnitID" UId="196" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="197" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="198" />
+  <NewLine Num="1" UId="199" />
+  <Token Text="END_CASE" UId="200" />
+  <Token Text=";" UId="201" />
+  <NewLine Num="1" UId="202" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>0=PLC_IO, 1=LoraAvg, 2=MSensor,3 =PLC</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Actual Room (salles area temp)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Call UId="22">
+      <CallInfo Name="AHU_UnitState" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="24">
+      <OpenCon UId="23" />
+      <NameCon UId="22" Name="en" />
+    </Wire>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="22" Name="iUnitID" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Call UId="22">
+      <CallInfo Name="AHU_Regulation" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="24">
+      <OpenCon UId="23" />
+      <NameCon UId="22" Name="en" />
+    </Wire>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="22" Name="iUnitID" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>FrostProtection demand(0-100%) defining</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Call UId="22">
+      <CallInfo Name="AHU_EqpCtrl" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="24">
+      <OpenCon UId="23" />
+      <NameCon UId="22" Name="en" />
+    </Wire>
+    <Wire UId="25">
+      <IdentCon UId="21" />
+      <NameCon UId="22" Name="iUnitID" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource />
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="27" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="28" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="29" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

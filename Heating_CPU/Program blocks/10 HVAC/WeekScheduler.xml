@@ -1,0 +1,1679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="Mon_PreComfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Mon_PreComfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Mon_Comfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Mon_Comfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="WD_PreComfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="WD_PreComfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="WD_Comfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="WD_Comfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sat_PreComfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sat_PreComfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sat_Comfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sat_Comfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sun_PreComfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sun_PreComfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sun_Comfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Sun_Comfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Hol_PreComfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Hol_PreComfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Hol_Comfort_Start" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Hol_Comfort_Stop" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="Holidays" Datatype="Array[1..4] of Date" Accessibility="Public" />
+  </Section>
+  <Section Name="Output">
+    <Member Name="cOpModeNow" Datatype="Byte" Accessibility="Public" />
+    <Member Name="xIsHoliday" Datatype="Bool" Accessibility="Public" />
+    <Member Name="cDayType" Datatype="Byte" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-US">1-WD/2-Sat/3-Sun/4 - Hol</MultiLanguageText>
+      </Comment>
+    </Member>
+    <Member Name="CurrentDate" Datatype="Date" Accessibility="Public" />
+    <Member Name="CurrentTOD" Datatype="Time_Of_Day" Accessibility="Public" />
+    <Member Name="iRetVal" Datatype="Int" Accessibility="Public" />
+  </Section>
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="NowDTL" Datatype="DTL" Version="1.0" />
+    <Member Name="i" Datatype="Int" />
+    <Member Name="PreComfStart" Datatype="Time_Of_Day" />
+    <Member Name="PreComfStop" Datatype="Time_Of_Day" />
+    <Member Name="ComfStart" Datatype="Time_Of_Day" />
+    <Member Name="ComfStop" Datatype="Time_Of_Day" />
+    <Member Name="xInPreComf" Datatype="Bool" />
+    <Member Name="xInComf" Datatype="Bool" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>WeekScheduler</Name>
+      <Namespace />
+      <Number>98</Number>
+      <ProgrammingLanguage>LAD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="22">
+    <Text UId="23"> Значення за замовчуванням</Text>
+  </LineComment>
+  <NewLine Num="1" UId="24" />
+  <Blank Num="3" UId="25" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="26">
+    <Text UId="27"> #cOpModeNow := 1; // Економ</Text>
+  </LineComment>
+  <NewLine Num="1" UId="28" />
+  <Blank Num="3" UId="29" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="30">
+    <Text UId="31"> #xIsHoliday := FALSE;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="32" />
+  <Blank Num="3" UId="33" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="34">
+    <Text UId="35"> #cDayType := 1; // Робочий</Text>
+  </LineComment>
+  <NewLine Num="1" UId="36" />
+  <Blank Num="3" UId="37" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="38">
+    <Text UId="39"> #CurrentDate := DATE#1990-01-01;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="40" />
+  <Blank Num="3" UId="41" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="42">
+    <Text UId="43"> #CurrentTOD := TOD#00:00:00;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="44" />
+  <Blank Num="3" UId="45" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="46">
+    <Text UId="47"> #iRetVal := 0;</Text>
+  </LineComment>
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>   // Значення за замовчуванням</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22"> Читаємо локальний час CPU</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="iRetVal" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text=":=" UId="28" />
+  <Blank Num="1" UId="29" />
+  <Access Scope="Call" UId="30">
+    <Instruction Name="RD_LOC_T" UId="31">
+      <Token Text="(" UId="32" />
+      <Parameter Name="OUT" UId="33">
+        <Blank Num="1" UId="34" />
+        <Token Text="=&gt;" UId="35" />
+        <Blank Num="1" UId="36" />
+        <Access Scope="LocalVariable" UId="37">
+          <Symbol UId="38">
+            <Component Name="NowDTL" UId="39" />
+          </Symbol>
+        </Access>
+      </Parameter>
+      <Token Text=")" UId="41" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="42" />
+  <NewLine Num="2" UId="43" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="44">
+    <Text UId="45"> Якщо час не прочитався - лишаємо Економ</Text>
+  </LineComment>
+  <NewLine Num="1" UId="46" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="47">
+    <Text UId="48">IF #iRetVal &gt;= 16#8000 THEN</Text>
+  </LineComment>
+  <NewLine Num="1" UId="49" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="50">
+    <Text UId="51">    #cOpModeNow := 1;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="52" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="53">
+    <Text UId="54">    RETURN;</Text>
+  </LineComment>
+  <NewLine Num="1" UId="55" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="56">
+    <Text UId="57">END_IF;</Text>
+  </LineComment>
+  <NewLine Num="2" UId="58" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="59">
+    <Text UId="60"> Виділяємо дату і час</Text>
+  </LineComment>
+  <NewLine Num="1" UId="61" />
+  <Access Scope="LocalVariable" UId="62">
+    <Symbol UId="63">
+      <Component Name="CurrentDate" UId="64" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="65" />
+  <Token Text=":=" UId="66" />
+  <Blank Num="1" UId="67" />
+  <Access Scope="Call" UId="68">
+    <Instruction Name="DTL_TO_DATE" UId="69">
+      <Token Text="(" UId="70" />
+      <NamelessParameter UId="71">
+        <Access Scope="LocalVariable" UId="72">
+          <Symbol UId="73">
+            <Component Name="NowDTL" UId="74" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="76" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="77" />
+  <NewLine Num="1" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="CurrentTOD" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank Num="1" UId="84" />
+  <Access Scope="Call" UId="85">
+    <Instruction Name="DTL_TO_TOD" UId="86">
+      <Token Text="(" UId="87" />
+      <NamelessParameter UId="88">
+        <Access Scope="LocalVariable" UId="89">
+          <Symbol UId="90">
+            <Component Name="NowDTL" UId="91" />
+          </Symbol>
+        </Access>
+      </NamelessParameter>
+      <Token Text=")" UId="93" />
+    </Instruction>
+  </Access>
+  <Token Text=";" UId="94" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Час на CPU</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22"> Перевірка святкового дня</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <Token Text="FOR" UId="24" />
+  <Blank Num="1" UId="25" />
+  <Access Scope="LocalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="i" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="29" />
+  <Token Text=":=" UId="30" />
+  <Blank Num="1" UId="31" />
+  <Access Scope="LiteralConstant" UId="32">
+    <Constant UId="33">
+      <ConstantValue UId="35">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="36" />
+  <Token Text="TO" UId="37" />
+  <Blank Num="1" UId="38" />
+  <Access Scope="LiteralConstant" UId="39">
+    <Constant UId="40">
+      <ConstantValue UId="42">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Blank Num="1" UId="43" />
+  <Token Text="DO" UId="44" />
+  <NewLine Num="1" UId="45" />
+  <Blank Num="4" UId="46" />
+  <Token Text="IF" UId="47" />
+  <Blank Num="1" UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="Holidays" UId="51">
+        <Token Text="[" UId="52" />
+        <Access Scope="LocalVariable" UId="53">
+          <Symbol UId="54">
+            <Component Name="i" UId="55" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="56" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="57" />
+  <Token Text="=" UId="58" />
+  <Blank Num="1" UId="59" />
+  <Access Scope="LocalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="CurrentDate" UId="62" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text="THEN" UId="64" />
+  <NewLine Num="1" UId="65" />
+  <Blank Num="8" UId="66" />
+  <Access Scope="LocalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="xIsHoliday" UId="69" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="70" />
+  <Token Text=":=" UId="71" />
+  <Blank Num="1" UId="72" />
+  <Access Scope="LiteralConstant" UId="73">
+    <Constant UId="74">
+      <ConstantValue UId="76">TRUE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="77" />
+  <NewLine Num="1" UId="78" />
+  <Blank Num="8" UId="79" />
+  <Token Text="EXIT" UId="80" />
+  <Token Text=";" UId="81" />
+  <NewLine Num="1" UId="82" />
+  <Blank Num="4" UId="83" />
+  <Token Text="END_IF" UId="84" />
+  <Token Text=";" UId="85" />
+  <NewLine Num="1" UId="86" />
+  <Token Text="END_FOR" UId="87" />
+  <Token Text=";" UId="88" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>// Перевірка святкового дня</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="22">
+    <Text UId="23"> Визначення типу дня</Text>
+  </LineComment>
+  <NewLine Num="1" UId="24" />
+  <Blank Num="4" UId="25" />
+  <Token Text="IF" UId="26" />
+  <Blank Num="1" UId="27" />
+  <Access Scope="LocalVariable" UId="28">
+    <Symbol UId="29">
+      <Component Name="xIsHoliday" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="31" />
+  <Token Text="THEN" UId="32" />
+  <NewLine Num="1" UId="33" />
+  <Blank Num="8" UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="cDayType" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="38" />
+  <Token Text=":=" UId="39" />
+  <Blank Num="1" UId="40" />
+  <Access Scope="LiteralConstant" UId="41">
+    <Constant UId="42">
+      <ConstantValue UId="44">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="45" />
+  <Blank Num="1" UId="46" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="47">
+    <Text UId="48"> Святковий</Text>
+  </LineComment>
+  <NewLine Num="1" UId="49" />
+  <Blank Num="4" UId="50" />
+  <Token Text="ELSE" UId="51" />
+  <NewLine Num="1" UId="52" />
+  <Blank Num="8" UId="53" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="54">
+    <Text UId="55"> Weekday: 1=Sunday ... 7=Saturday</Text>
+  </LineComment>
+  <NewLine Num="1" UId="56" />
+  <Blank Num="8" UId="57" />
+  <Token Text="CASE" UId="58" />
+  <Blank Num="1" UId="59" />
+  <Access Scope="LocalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="NowDTL" UId="62" />
+      <Token Text="." UId="63" />
+      <Component Name="WEEKDAY" UId="64" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="65" />
+  <Token Text="OF" UId="66" />
+  <NewLine Num="1" UId="67" />
+  <Blank Num="12" UId="68" />
+  <Access Scope="LiteralConstant" UId="69">
+    <Constant UId="70">
+      <ConstantValue UId="72">7</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="73" />
+  <NewLine Num="1" UId="74" />
+  <Blank Num="16" UId="75" />
+  <Access Scope="LocalVariable" UId="76">
+    <Symbol UId="77">
+      <Component Name="cDayType" UId="78" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="79" />
+  <Token Text=":=" UId="80" />
+  <Blank Num="1" UId="81" />
+  <Access Scope="LiteralConstant" UId="82">
+    <Constant UId="83">
+      <ConstantValue UId="85">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="86" />
+  <Blank Num="1" UId="87" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="88">
+    <Text UId="89"> Субота</Text>
+  </LineComment>
+  <NewLine Num="1" UId="90" />
+  <Blank Num="12" UId="91" />
+  <Access Scope="LiteralConstant" UId="92">
+    <Constant UId="93">
+      <ConstantValue UId="95">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="96" />
+  <NewLine Num="1" UId="97" />
+  <Blank Num="16" UId="98" />
+  <Access Scope="LocalVariable" UId="99">
+    <Symbol UId="100">
+      <Component Name="cDayType" UId="101" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="102" />
+  <Token Text=":=" UId="103" />
+  <Blank Num="1" UId="104" />
+  <Access Scope="LiteralConstant" UId="105">
+    <Constant UId="106">
+      <ConstantValue UId="108">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="109" />
+  <Blank Num="1" UId="110" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="111">
+    <Text UId="112"> Неділя</Text>
+  </LineComment>
+  <NewLine Num="1" UId="113" />
+  <Blank Num="12" UId="114" />
+  <Access Scope="LiteralConstant" UId="115">
+    <Constant UId="116">
+      <ConstantValue UId="118">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="119" />
+  <NewLine Num="1" UId="120" />
+  <Blank Num="16" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="cDayType" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LiteralConstant" UId="128">
+    <Constant UId="129">
+      <ConstantValue UId="131">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="132" />
+  <Blank Num="1" UId="133" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="134">
+    <Text UId="135"> Понеділок</Text>
+  </LineComment>
+  <NewLine Num="1" UId="136" />
+  <Blank Num="12" UId="137" />
+  <Token Text="ELSE" UId="138" />
+  <NewLine Num="1" UId="139" />
+  <Blank Num="16" UId="140" />
+  <Access Scope="LocalVariable" UId="141">
+    <Symbol UId="142">
+      <Component Name="cDayType" UId="143" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="144" />
+  <Token Text=":=" UId="145" />
+  <Blank Num="1" UId="146" />
+  <Access Scope="LiteralConstant" UId="147">
+    <Constant UId="148">
+      <ConstantValue UId="150">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="151" />
+  <Blank Num="1" UId="152" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="153">
+    <Text UId="154"> Робочий</Text>
+  </LineComment>
+  <NewLine Num="1" UId="155" />
+  <Blank Num="8" UId="156" />
+  <Token Text="END_CASE" UId="157" />
+  <Token Text=";" UId="158" />
+  <NewLine Num="1" UId="159" />
+  <Blank Num="4" UId="160" />
+  <Token Text="END_IF" UId="161" />
+  <Token Text=";" UId="162" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>0-WD/1-Mon/2-Sat/3-Sun/4 - Hol</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <LineComment Inserted="false" NoClosingBracket="false" UId="21">
+    <Text UId="22"> Вибір активного розкладу</Text>
+  </LineComment>
+  <NewLine Num="1" UId="23" />
+  <Token Text="CASE" UId="24" />
+  <Blank Num="1" UId="25" />
+  <Access Scope="LocalVariable" UId="26">
+    <Symbol UId="27">
+      <Component Name="cDayType" UId="28" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="29" />
+  <Token Text="OF" UId="30" />
+  <NewLine Num="1" UId="31" />
+  <Blank Num="4" UId="32" />
+  <Access Scope="LiteralConstant" UId="33">
+    <Constant UId="34">
+      <ConstantValue UId="36">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="37" />
+  <Blank Num="1" UId="38" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="39">
+    <Text UId="40"> Робочий</Text>
+  </LineComment>
+  <NewLine Num="1" UId="41" />
+  <Blank Num="8" UId="42" />
+  <Access Scope="LocalVariable" UId="43">
+    <Symbol UId="44">
+      <Component Name="PreComfStart" UId="45" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="46" />
+  <Token Text=":=" UId="47" />
+  <Blank Num="1" UId="48" />
+  <Access Scope="LocalVariable" UId="49">
+    <Symbol UId="50">
+      <Component Name="WD_PreComfort_Start" UId="51" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="52" />
+  <NewLine Num="1" UId="53" />
+  <Blank Num="8" UId="54" />
+  <Access Scope="LocalVariable" UId="55">
+    <Symbol UId="56">
+      <Component Name="PreComfStop" UId="57" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="58" />
+  <Token Text=":=" UId="59" />
+  <Blank Num="1" UId="60" />
+  <Access Scope="LocalVariable" UId="61">
+    <Symbol UId="62">
+      <Component Name="WD_PreComfort_Stop" UId="63" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="64" />
+  <NewLine Num="1" UId="65" />
+  <Blank Num="8" UId="66" />
+  <Access Scope="LocalVariable" UId="67">
+    <Symbol UId="68">
+      <Component Name="ComfStart" UId="69" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="70" />
+  <Token Text=":=" UId="71" />
+  <Blank Num="1" UId="72" />
+  <Access Scope="LocalVariable" UId="73">
+    <Symbol UId="74">
+      <Component Name="WD_Comfort_Start" UId="75" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="76" />
+  <NewLine Num="1" UId="77" />
+  <Blank Num="8" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="ComfStop" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank Num="1" UId="84" />
+  <Access Scope="LocalVariable" UId="85">
+    <Symbol UId="86">
+      <Component Name="WD_Comfort_Stop" UId="87" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="88" />
+  <NewLine Num="1" UId="89" />
+  <Blank Num="8" UId="90" />
+  <NewLine Num="1" UId="91" />
+  <Blank Num="4" UId="92" />
+  <Access Scope="LiteralConstant" UId="93">
+    <Constant UId="94">
+      <ConstantValue UId="96">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="97" />
+  <Blank Num="1" UId="98" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="99">
+    <Text UId="100"> Понеділок</Text>
+  </LineComment>
+  <NewLine Num="1" UId="101" />
+  <Blank Num="8" UId="102" />
+  <Access Scope="LocalVariable" UId="103">
+    <Symbol UId="104">
+      <Component Name="PreComfStart" UId="105" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="106" />
+  <Token Text=":=" UId="107" />
+  <Blank Num="1" UId="108" />
+  <Access Scope="LocalVariable" UId="109">
+    <Symbol UId="110">
+      <Component Name="Mon_PreComfort_Start" UId="111" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="112" />
+  <NewLine Num="1" UId="113" />
+  <Blank Num="8" UId="114" />
+  <Access Scope="LocalVariable" UId="115">
+    <Symbol UId="116">
+      <Component Name="PreComfStop" UId="117" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="118" />
+  <Token Text=":=" UId="119" />
+  <Blank Num="1" UId="120" />
+  <Access Scope="LocalVariable" UId="121">
+    <Symbol UId="122">
+      <Component Name="Mon_PreComfort_Stop" UId="123" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="124" />
+  <NewLine Num="1" UId="125" />
+  <Blank Num="8" UId="126" />
+  <Access Scope="LocalVariable" UId="127">
+    <Symbol UId="128">
+      <Component Name="ComfStart" UId="129" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="130" />
+  <Token Text=":=" UId="131" />
+  <Blank Num="1" UId="132" />
+  <Access Scope="LocalVariable" UId="133">
+    <Symbol UId="134">
+      <Component Name="Mon_Comfort_Start" UId="135" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="136" />
+  <NewLine Num="1" UId="137" />
+  <Blank Num="8" UId="138" />
+  <Access Scope="LocalVariable" UId="139">
+    <Symbol UId="140">
+      <Component Name="ComfStop" UId="141" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="142" />
+  <Token Text=":=" UId="143" />
+  <Blank Num="1" UId="144" />
+  <Access Scope="LocalVariable" UId="145">
+    <Symbol UId="146">
+      <Component Name="Mon_Comfort_Stop" UId="147" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="148" />
+  <NewLine Num="1" UId="149" />
+  <Blank Num="8" UId="150" />
+  <NewLine Num="1" UId="151" />
+  <Blank Num="4" UId="152" />
+  <Access Scope="LiteralConstant" UId="153">
+    <Constant UId="154">
+      <ConstantValue UId="156">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="157" />
+  <Blank Num="1" UId="158" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="159">
+    <Text UId="160"> Субота</Text>
+  </LineComment>
+  <NewLine Num="1" UId="161" />
+  <Blank Num="8" UId="162" />
+  <Access Scope="LocalVariable" UId="163">
+    <Symbol UId="164">
+      <Component Name="PreComfStart" UId="165" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="166" />
+  <Token Text=":=" UId="167" />
+  <Blank Num="1" UId="168" />
+  <Access Scope="LocalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="Sat_PreComfort_Start" UId="171" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="172" />
+  <NewLine Num="1" UId="173" />
+  <Blank Num="8" UId="174" />
+  <Access Scope="LocalVariable" UId="175">
+    <Symbol UId="176">
+      <Component Name="PreComfStop" UId="177" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="178" />
+  <Token Text=":=" UId="179" />
+  <Blank Num="1" UId="180" />
+  <Access Scope="LocalVariable" UId="181">
+    <Symbol UId="182">
+      <Component Name="Sat_PreComfort_Stop" UId="183" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="184" />
+  <NewLine Num="1" UId="185" />
+  <Blank Num="8" UId="186" />
+  <Access Scope="LocalVariable" UId="187">
+    <Symbol UId="188">
+      <Component Name="ComfStart" UId="189" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="190" />
+  <Token Text=":=" UId="191" />
+  <Blank Num="1" UId="192" />
+  <Access Scope="LocalVariable" UId="193">
+    <Symbol UId="194">
+      <Component Name="Sat_Comfort_Start" UId="195" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="196" />
+  <NewLine Num="1" UId="197" />
+  <Blank Num="8" UId="198" />
+  <Access Scope="LocalVariable" UId="199">
+    <Symbol UId="200">
+      <Component Name="ComfStop" UId="201" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="202" />
+  <Token Text=":=" UId="203" />
+  <Blank Num="1" UId="204" />
+  <Access Scope="LocalVariable" UId="205">
+    <Symbol UId="206">
+      <Component Name="Sat_Comfort_Stop" UId="207" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="208" />
+  <NewLine Num="1" UId="209" />
+  <Blank Num="8" UId="210" />
+  <NewLine Num="1" UId="211" />
+  <Blank Num="4" UId="212" />
+  <Access Scope="LiteralConstant" UId="213">
+    <Constant UId="214">
+      <ConstantValue UId="216">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="217" />
+  <Blank Num="1" UId="218" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="219">
+    <Text UId="220"> Неділя</Text>
+  </LineComment>
+  <NewLine Num="1" UId="221" />
+  <Blank Num="8" UId="222" />
+  <Access Scope="LocalVariable" UId="223">
+    <Symbol UId="224">
+      <Component Name="PreComfStart" UId="225" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="226" />
+  <Token Text=":=" UId="227" />
+  <Blank Num="1" UId="228" />
+  <Access Scope="LocalVariable" UId="229">
+    <Symbol UId="230">
+      <Component Name="Sun_PreComfort_Start" UId="231" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="232" />
+  <NewLine Num="1" UId="233" />
+  <Blank Num="8" UId="234" />
+  <Access Scope="LocalVariable" UId="235">
+    <Symbol UId="236">
+      <Component Name="PreComfStop" UId="237" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="238" />
+  <Token Text=":=" UId="239" />
+  <Blank Num="1" UId="240" />
+  <Access Scope="LocalVariable" UId="241">
+    <Symbol UId="242">
+      <Component Name="Sun_PreComfort_Stop" UId="243" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="244" />
+  <NewLine Num="1" UId="245" />
+  <Blank Num="8" UId="246" />
+  <Access Scope="LocalVariable" UId="247">
+    <Symbol UId="248">
+      <Component Name="ComfStart" UId="249" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="250" />
+  <Token Text=":=" UId="251" />
+  <Blank Num="1" UId="252" />
+  <Access Scope="LocalVariable" UId="253">
+    <Symbol UId="254">
+      <Component Name="Sun_Comfort_Start" UId="255" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="256" />
+  <NewLine Num="1" UId="257" />
+  <Blank Num="8" UId="258" />
+  <Access Scope="LocalVariable" UId="259">
+    <Symbol UId="260">
+      <Component Name="ComfStop" UId="261" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="262" />
+  <Token Text=":=" UId="263" />
+  <Blank Num="1" UId="264" />
+  <Access Scope="LocalVariable" UId="265">
+    <Symbol UId="266">
+      <Component Name="Sun_Comfort_Stop" UId="267" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="268" />
+  <NewLine Num="1" UId="269" />
+  <Blank Num="8" UId="270" />
+  <NewLine Num="1" UId="271" />
+  <Blank Num="4" UId="272" />
+  <Access Scope="LiteralConstant" UId="273">
+    <Constant UId="274">
+      <ConstantValue UId="276">4</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="277" />
+  <Blank Num="1" UId="278" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="279">
+    <Text UId="280"> Святковий</Text>
+  </LineComment>
+  <NewLine Num="1" UId="281" />
+  <Blank Num="8" UId="282" />
+  <Access Scope="LocalVariable" UId="283">
+    <Symbol UId="284">
+      <Component Name="PreComfStart" UId="285" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="286" />
+  <Token Text=":=" UId="287" />
+  <Blank Num="1" UId="288" />
+  <Access Scope="LocalVariable" UId="289">
+    <Symbol UId="290">
+      <Component Name="Hol_PreComfort_Start" UId="291" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="292" />
+  <NewLine Num="1" UId="293" />
+  <Blank Num="8" UId="294" />
+  <Access Scope="LocalVariable" UId="295">
+    <Symbol UId="296">
+      <Component Name="PreComfStop" UId="297" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="298" />
+  <Token Text=":=" UId="299" />
+  <Blank Num="1" UId="300" />
+  <Access Scope="LocalVariable" UId="301">
+    <Symbol UId="302">
+      <Component Name="Hol_PreComfort_Stop" UId="303" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="304" />
+  <NewLine Num="1" UId="305" />
+  <Blank Num="8" UId="306" />
+  <Access Scope="LocalVariable" UId="307">
+    <Symbol UId="308">
+      <Component Name="ComfStart" UId="309" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="310" />
+  <Token Text=":=" UId="311" />
+  <Blank Num="1" UId="312" />
+  <Access Scope="LocalVariable" UId="313">
+    <Symbol UId="314">
+      <Component Name="Hol_Comfort_Start" UId="315" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="316" />
+  <NewLine Num="1" UId="317" />
+  <Blank Num="8" UId="318" />
+  <Access Scope="LocalVariable" UId="319">
+    <Symbol UId="320">
+      <Component Name="ComfStop" UId="321" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="322" />
+  <Token Text=":=" UId="323" />
+  <Blank Num="1" UId="324" />
+  <Access Scope="LocalVariable" UId="325">
+    <Symbol UId="326">
+      <Component Name="Hol_Comfort_Stop" UId="327" />
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="328" />
+  <NewLine Num="1" UId="329" />
+  <Blank Num="8" UId="330" />
+  <NewLine Num="1" UId="331" />
+  <Blank Num="4" UId="332" />
+  <Token Text="ELSE" UId="333" />
+  <NewLine Num="1" UId="334" />
+  <Blank Num="8" UId="335" />
+  <Access Scope="LocalVariable" UId="336">
+    <Symbol UId="337">
+      <Component Name="PreComfStart" UId="338" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="339" />
+  <Token Text=":=" UId="340" />
+  <Blank Num="1" UId="341" />
+  <Access Scope="TypedConstant" UId="342">
+    <Constant UId="343">
+      <ConstantValue UId="344">TOD#00:00:00</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="345" />
+  <NewLine Num="1" UId="346" />
+  <Blank Num="8" UId="347" />
+  <Access Scope="LocalVariable" UId="348">
+    <Symbol UId="349">
+      <Component Name="PreComfStop" UId="350" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="351" />
+  <Token Text=":=" UId="352" />
+  <Blank Num="1" UId="353" />
+  <Access Scope="TypedConstant" UId="354">
+    <Constant UId="355">
+      <ConstantValue UId="356">TOD#00:00:00</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="357" />
+  <NewLine Num="1" UId="358" />
+  <Blank Num="8" UId="359" />
+  <Access Scope="LocalVariable" UId="360">
+    <Symbol UId="361">
+      <Component Name="ComfStart" UId="362" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="363" />
+  <Token Text=":=" UId="364" />
+  <Blank Num="1" UId="365" />
+  <Access Scope="TypedConstant" UId="366">
+    <Constant UId="367">
+      <ConstantValue UId="368">TOD#00:00:00</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="369" />
+  <NewLine Num="1" UId="370" />
+  <Blank Num="8" UId="371" />
+  <Access Scope="LocalVariable" UId="372">
+    <Symbol UId="373">
+      <Component Name="ComfStop" UId="374" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="375" />
+  <Token Text=":=" UId="376" />
+  <Blank Num="1" UId="377" />
+  <Access Scope="TypedConstant" UId="378">
+    <Constant UId="379">
+      <ConstantValue UId="380">TOD#00:00:00</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="381" />
+  <NewLine Num="1" UId="382" />
+  <Blank Num="8" UId="383" />
+  <NewLine Num="1" UId="384" />
+  <Token Text="END_CASE" UId="385" />
+  <Token Text=";" UId="386" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>// Вибір активного розкладу</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="27" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <Token Text="IF" UId="22" />
+  <Blank Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="ComfStart" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text="=" UId="28" />
+  <Blank Num="1" UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="ComfStop" UId="32" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text="THEN" UId="34" />
+  <NewLine Num="1" UId="35" />
+  <Blank Num="8" UId="36" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="37">
+    <Text UId="38"> трактуємо як "вікно вимкнене"</Text>
+  </LineComment>
+  <NewLine Num="1" UId="39" />
+  <Blank Num="8" UId="40" />
+  <Access Scope="LocalVariable" UId="41">
+    <Symbol UId="42">
+      <Component Name="xInComf" UId="43" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="44" />
+  <Token Text=":=" UId="45" />
+  <Blank Num="1" UId="46" />
+  <Access Scope="LiteralConstant" UId="47">
+    <Constant UId="48">
+      <ConstantValue UId="50">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="51" />
+  <NewLine Num="1" UId="52" />
+  <Blank Num="8" UId="53" />
+  <NewLine Num="1" UId="54" />
+  <Blank Num="4" UId="55" />
+  <Token Text="ELSIF" UId="56" />
+  <Blank Num="1" UId="57" />
+  <Access Scope="LocalVariable" UId="58">
+    <Symbol UId="59">
+      <Component Name="ComfStart" UId="60" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="61" />
+  <Token Text="&lt;" UId="62" />
+  <Blank Num="2" UId="63" />
+  <Access Scope="LocalVariable" UId="64">
+    <Symbol UId="65">
+      <Component Name="ComfStop" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="67" />
+  <Token Text="THEN" UId="68" />
+  <NewLine Num="1" UId="69" />
+  <Blank Num="8" UId="70" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="71">
+    <Text UId="72"> звичайний інтервал, наприклад 06:00..22:00</Text>
+  </LineComment>
+  <NewLine Num="1" UId="73" />
+  <Blank Num="8" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="xInComf" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="78" />
+  <Token Text=":=" UId="79" />
+  <Blank Num="1" UId="80" />
+  <Token Text="(" UId="81" />
+  <Access Scope="LocalVariable" UId="82">
+    <Symbol UId="83">
+      <Component Name="CurrentTOD" UId="84" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="85" />
+  <Token Text="&gt;=" UId="86" />
+  <Blank Num="1" UId="87" />
+  <Access Scope="LocalVariable" UId="88">
+    <Symbol UId="89">
+      <Component Name="ComfStart" UId="90" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="91" />
+  <Blank Num="1" UId="92" />
+  <Token Text="AND" UId="93" />
+  <Blank Num="1" UId="94" />
+  <Token Text="(" UId="95" />
+  <Access Scope="LocalVariable" UId="96">
+    <Symbol UId="97">
+      <Component Name="CurrentTOD" UId="98" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="99" />
+  <Token Text="&lt;" UId="100" />
+  <Blank Num="1" UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="ComfStop" UId="104" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="105" />
+  <Token Text=";" UId="106" />
+  <NewLine Num="1" UId="107" />
+  <Blank Num="8" UId="108" />
+  <NewLine Num="1" UId="109" />
+  <Blank Num="4" UId="110" />
+  <Token Text="ELSE" UId="111" />
+  <NewLine Num="1" UId="112" />
+  <Blank Num="8" UId="113" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="114">
+    <Text UId="115"> інтервал через північ, наприклад 22:00..06:00</Text>
+  </LineComment>
+  <NewLine Num="1" UId="116" />
+  <Blank Num="8" UId="117" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="118">
+    <Text UId="119">#xInComf := (#CurrentTOD &gt;= #ComfStart) OR (#CurrentTOD &lt; #ComfStop);</Text>
+  </LineComment>
+  <NewLine Num="1" UId="120" />
+  <Blank Num="8" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="xInComf" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LiteralConstant" UId="128">
+    <Constant UId="129">
+      <ConstantValue UId="131">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="132" />
+  <NewLine Num="1" UId="133" />
+  <Blank Num="4" UId="134" />
+  <Token Text="END_IF" UId="135" />
+  <Token Text=";" UId="136" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="28" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="29" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="2B" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="2C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>  // Перевірка потрапляння в інтервали InComf</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="2D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="2E" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <Token Text="IF" UId="22" />
+  <Blank Num="1" UId="23" />
+  <Access Scope="LocalVariable" UId="24">
+    <Symbol UId="25">
+      <Component Name="PreComfStart" UId="26" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="27" />
+  <Token Text="=" UId="28" />
+  <Blank Num="1" UId="29" />
+  <Access Scope="LocalVariable" UId="30">
+    <Symbol UId="31">
+      <Component Name="PreComfStop" UId="32" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="33" />
+  <Token Text="THEN" UId="34" />
+  <NewLine Num="1" UId="35" />
+  <Blank Num="8" UId="36" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="37">
+    <Text UId="38"> трактуємо як "вікно вимкнене"</Text>
+  </LineComment>
+  <NewLine Num="1" UId="39" />
+  <Blank Num="8" UId="40" />
+  <Access Scope="LocalVariable" UId="41">
+    <Symbol UId="42">
+      <Component Name="xInPreComf" UId="43" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="44" />
+  <Token Text=":=" UId="45" />
+  <Blank Num="1" UId="46" />
+  <Access Scope="LiteralConstant" UId="47">
+    <Constant UId="48">
+      <ConstantValue UId="50">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="51" />
+  <NewLine Num="1" UId="52" />
+  <Blank Num="8" UId="53" />
+  <NewLine Num="1" UId="54" />
+  <Blank Num="4" UId="55" />
+  <Token Text="ELSIF" UId="56" />
+  <Blank Num="1" UId="57" />
+  <Access Scope="LocalVariable" UId="58">
+    <Symbol UId="59">
+      <Component Name="PreComfStart" UId="60" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="61" />
+  <Token Text="&lt;" UId="62" />
+  <Blank Num="1" UId="63" />
+  <Access Scope="LocalVariable" UId="64">
+    <Symbol UId="65">
+      <Component Name="PreComfStop" UId="66" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="67" />
+  <Token Text="THEN" UId="68" />
+  <NewLine Num="1" UId="69" />
+  <Blank Num="8" UId="70" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="71">
+    <Text UId="72"> звичайний інтервал, наприклад 06:00..22:00</Text>
+  </LineComment>
+  <NewLine Num="1" UId="73" />
+  <Blank Num="8" UId="74" />
+  <Access Scope="LocalVariable" UId="75">
+    <Symbol UId="76">
+      <Component Name="xInPreComf" UId="77" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="78" />
+  <Token Text=":=" UId="79" />
+  <Blank Num="1" UId="80" />
+  <Token Text="(" UId="81" />
+  <Access Scope="LocalVariable" UId="82">
+    <Symbol UId="83">
+      <Component Name="CurrentTOD" UId="84" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="85" />
+  <Token Text="&gt;=" UId="86" />
+  <Blank Num="1" UId="87" />
+  <Access Scope="LocalVariable" UId="88">
+    <Symbol UId="89">
+      <Component Name="PreComfStart" UId="90" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="91" />
+  <Blank Num="1" UId="92" />
+  <Token Text="AND" UId="93" />
+  <Blank Num="1" UId="94" />
+  <Token Text="(" UId="95" />
+  <Access Scope="LocalVariable" UId="96">
+    <Symbol UId="97">
+      <Component Name="CurrentTOD" UId="98" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="99" />
+  <Token Text="&lt;" UId="100" />
+  <Blank Num="1" UId="101" />
+  <Access Scope="LocalVariable" UId="102">
+    <Symbol UId="103">
+      <Component Name="PreComfStop" UId="104" />
+    </Symbol>
+  </Access>
+  <Token Text=")" UId="105" />
+  <Token Text=";" UId="106" />
+  <NewLine Num="1" UId="107" />
+  <Blank Num="8" UId="108" />
+  <NewLine Num="1" UId="109" />
+  <Blank Num="4" UId="110" />
+  <Token Text="ELSE" UId="111" />
+  <NewLine Num="1" UId="112" />
+  <Blank Num="8" UId="113" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="114">
+    <Text UId="115"> інтервал через північ, наприклад 22:00..06:00</Text>
+  </LineComment>
+  <NewLine Num="1" UId="116" />
+  <Blank Num="8" UId="117" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="118">
+    <Text UId="119">#xInComf := (#CurrentTOD &gt;= #ComfStart) OR (#CurrentTOD &lt; #ComfStop);</Text>
+  </LineComment>
+  <NewLine Num="1" UId="120" />
+  <Blank Num="8" UId="121" />
+  <Access Scope="LocalVariable" UId="122">
+    <Symbol UId="123">
+      <Component Name="xInPreComf" UId="124" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="125" />
+  <Token Text=":=" UId="126" />
+  <Blank Num="1" UId="127" />
+  <Access Scope="LiteralConstant" UId="128">
+    <Constant UId="129">
+      <ConstantValue UId="131">FALSE</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="132" />
+  <NewLine Num="1" UId="133" />
+  <Blank Num="4" UId="134" />
+  <Token Text="END_IF" UId="135" />
+  <Token Text=";" UId="136" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="2F" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="30" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="31" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="32" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="33" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>  // Перевірка потрапляння в інтервали InPreComf</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="34" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="35" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Blank Num="4" UId="21" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="22">
+    <Text UId="23"> Пріоритет: Комфорт &gt; Прекомфорт &gt; Економ</Text>
+  </LineComment>
+  <NewLine Num="1" UId="24" />
+  <Blank Num="4" UId="25" />
+  <Token Text="IF" UId="26" />
+  <Blank Num="1" UId="27" />
+  <Access Scope="LocalVariable" UId="28">
+    <Symbol UId="29">
+      <Component Name="xInComf" UId="30" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="31" />
+  <Token Text="THEN" UId="32" />
+  <NewLine Num="1" UId="33" />
+  <Blank Num="8" UId="34" />
+  <Access Scope="LocalVariable" UId="35">
+    <Symbol UId="36">
+      <Component Name="cOpModeNow" UId="37" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="38" />
+  <Token Text=":=" UId="39" />
+  <Blank Num="1" UId="40" />
+  <Access Scope="LiteralConstant" UId="41">
+    <Constant UId="42">
+      <ConstantValue UId="44">3</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="45" />
+  <Blank Num="1" UId="46" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="47">
+    <Text UId="48"> Комфорт</Text>
+  </LineComment>
+  <NewLine Num="1" UId="49" />
+  <Blank Num="4" UId="50" />
+  <Token Text="ELSIF" UId="51" />
+  <Blank Num="1" UId="52" />
+  <Access Scope="LocalVariable" UId="53">
+    <Symbol UId="54">
+      <Component Name="xInPreComf" UId="55" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="56" />
+  <Token Text="THEN" UId="57" />
+  <NewLine Num="1" UId="58" />
+  <Blank Num="8" UId="59" />
+  <Access Scope="LocalVariable" UId="60">
+    <Symbol UId="61">
+      <Component Name="cOpModeNow" UId="62" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text=":=" UId="64" />
+  <Blank Num="1" UId="65" />
+  <Access Scope="LiteralConstant" UId="66">
+    <Constant UId="67">
+      <ConstantValue UId="69">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="70" />
+  <Blank Num="1" UId="71" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="72">
+    <Text UId="73"> Прекомфорт</Text>
+  </LineComment>
+  <NewLine Num="1" UId="74" />
+  <Blank Num="4" UId="75" />
+  <Token Text="ELSE" UId="76" />
+  <NewLine Num="1" UId="77" />
+  <Blank Num="8" UId="78" />
+  <Access Scope="LocalVariable" UId="79">
+    <Symbol UId="80">
+      <Component Name="cOpModeNow" UId="81" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="82" />
+  <Token Text=":=" UId="83" />
+  <Blank Num="1" UId="84" />
+  <Access Scope="LiteralConstant" UId="85">
+    <Constant UId="86">
+      <ConstantValue UId="88">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=";" UId="89" />
+  <Blank Num="1" UId="90" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="91">
+    <Text UId="92"> Економ</Text>
+  </LineComment>
+  <NewLine Num="1" UId="93" />
+  <Blank Num="4" UId="94" />
+  <Token Text="END_IF" UId="95" />
+  <Token Text=";" UId="96" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="36" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="37" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="38" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="39" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="3A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>// Пріоритет: Комфорт > Прекомфорт > Економ</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="3B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="3C" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="3D" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3E" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

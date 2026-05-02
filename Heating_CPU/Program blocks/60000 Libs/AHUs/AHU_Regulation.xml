@@ -1,0 +1,1481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.FC ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Input">
+    <Member Name="iUnitID" Datatype="Int" Accessibility="Public">
+      <Comment>
+        <MultiLanguageText Lang="en-US">1=AHUFood, 2=AHUNonFood</MultiLanguageText>
+      </Comment>
+    </Member>
+  </Section>
+  <Section Name="Output" />
+  <Section Name="InOut" />
+  <Section Name="Temp">
+    <Member Name="FA_temp" Datatype="Real" />
+  </Section>
+  <Section Name="Constant" />
+  <Section Name="Return">
+    <Member Name="Ret_Val" Datatype="Void" Accessibility="Public" />
+  </Section>
+</Sections></Interface>
+      <IsIECCheckEnabled>false</IsIECCheckEnabled>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <Name>AHU_Regulation</Name>
+      <Namespace />
+      <Number>60200</Number>
+      <ProgrammingLanguage>FBD</ProgrammingLanguage>
+      <SetENOAutomatically>false</SetENOAutomatically>
+      <UDABlockProperties />
+      <UDAEnableTagReadback>false</UDAEnableTagReadback>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <SW.Blocks.CompileUnit ID="4" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><StructuredText xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/StructuredText/v3">
+  <Token Text="CASE" UId="21" />
+  <Blank Num="1" UId="22" />
+  <Access Scope="GlobalVariable" UId="23">
+    <Symbol UId="24">
+      <Component Name="AHUAI" UId="25">
+        <BooleanAttribute Name="HasQuotes" UId="26">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="27" />
+      <Component Name="AI" UId="28" />
+      <Token Text="." UId="29" />
+      <Component Name="cRoomTempSelect" UId="30">
+        <Token Text="[" UId="31" />
+        <Access Scope="LocalVariable" UId="32">
+          <Symbol UId="33">
+            <Component Name="iUnitID" UId="34" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="35" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="36" />
+  <Token Text="OF" UId="37" />
+  <NewLine Num="1" UId="38" />
+  <Blank Num="4" UId="39" />
+  <Access Scope="LiteralConstant" UId="40">
+    <Constant UId="41">
+      <ConstantValue UId="43">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="44" />
+  <Blank Num="2" UId="45" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="46">
+    <Text UId="47"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="48" />
+  <Blank Num="8" UId="49" />
+  <Access Scope="GlobalVariable" UId="50">
+    <Symbol UId="51">
+      <Component Name="AHUAI" UId="52">
+        <BooleanAttribute Name="HasQuotes" UId="53">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="54" />
+      <Component Name="AI" UId="55" />
+      <Token Text="." UId="56" />
+      <Component Name="rRoomAirTemp_Actual" UId="57">
+        <Token Text="[" UId="58" />
+        <Access Scope="LocalVariable" UId="59">
+          <Symbol UId="60">
+            <Component Name="iUnitID" UId="61" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="62" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="63" />
+  <Token Text=":=" UId="64" />
+  <Blank Num="1" UId="65" />
+  <Access Scope="GlobalVariable" UId="66">
+    <Symbol UId="67">
+      <Component Name="AHUAI" UId="68">
+        <BooleanAttribute Name="HasQuotes" UId="69">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="70" />
+      <Component Name="AI" UId="71" />
+      <Token Text="." UId="72" />
+      <Component Name="rRoomAirTemp_PLC_AI" UId="73">
+        <Token Text="[" UId="74" />
+        <Access Scope="LocalVariable" UId="75">
+          <Symbol UId="76">
+            <Component Name="iUnitID" UId="77" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="78" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="79" />
+  <NewLine Num="1" UId="80" />
+  <Blank Num="4" UId="81" />
+  <Access Scope="LiteralConstant" UId="82">
+    <Constant UId="83">
+      <ConstantValue UId="85">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="86" />
+  <Blank Num="2" UId="87" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="88">
+    <Text UId="89"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="90" />
+  <Blank Num="8" UId="91" />
+  <Access Scope="GlobalVariable" UId="92">
+    <Symbol UId="93">
+      <Component Name="AHUAI" UId="94">
+        <BooleanAttribute Name="HasQuotes" UId="95">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="96" />
+      <Component Name="AI" UId="97" />
+      <Token Text="." UId="98" />
+      <Component Name="rRoomAirTemp_Actual" UId="99">
+        <Token Text="[" UId="100" />
+        <Access Scope="LocalVariable" UId="101">
+          <Symbol UId="102">
+            <Component Name="iUnitID" UId="103" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="104" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="105" />
+  <Token Text=":=" UId="106" />
+  <Blank Num="1" UId="107" />
+  <Access Scope="GlobalVariable" UId="108">
+    <Symbol UId="109">
+      <Component Name="AHUAI" UId="110">
+        <BooleanAttribute Name="HasQuotes" UId="111">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="112" />
+      <Component Name="AI" UId="113" />
+      <Token Text="." UId="114" />
+      <Component Name="rRoomAirTemp_LoraAvg" UId="115">
+        <Token Text="[" UId="116" />
+        <Access Scope="LocalVariable" UId="117">
+          <Symbol UId="118">
+            <Component Name="iUnitID" UId="119" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="120" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="121" />
+  <NewLine Num="1" UId="122" />
+  <Blank Num="4" UId="123" />
+  <Access Scope="LiteralConstant" UId="124">
+    <Constant UId="125">
+      <ConstantValue UId="127">2</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="128" />
+  <Blank Num="1" UId="129" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="130">
+    <Text UId="131"> </Text>
+  </LineComment>
+  <NewLine Num="1" UId="132" />
+  <Blank Num="8" UId="133" />
+  <Access Scope="GlobalVariable" UId="134">
+    <Symbol UId="135">
+      <Component Name="AHUAI" UId="136">
+        <BooleanAttribute Name="HasQuotes" UId="137">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="138" />
+      <Component Name="AI" UId="139" />
+      <Token Text="." UId="140" />
+      <Component Name="rRoomAirTemp_Actual" UId="141">
+        <Token Text="[" UId="142" />
+        <Access Scope="LocalVariable" UId="143">
+          <Symbol UId="144">
+            <Component Name="iUnitID" UId="145" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="146" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="147" />
+  <Token Text=":=" UId="148" />
+  <Blank Num="1" UId="149" />
+  <Access Scope="GlobalVariable" UId="150">
+    <Symbol UId="151">
+      <Component Name="AHUAI" UId="152">
+        <BooleanAttribute Name="HasQuotes" UId="153">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="154" />
+      <Component Name="AI" UId="155" />
+      <Token Text="." UId="156" />
+      <Component Name="rRoomAirTemp_MSensor" UId="157">
+        <Token Text="[" UId="158" />
+        <Access Scope="LocalVariable" UId="159">
+          <Symbol UId="160">
+            <Component Name="iUnitID" UId="161" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="162" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="163" />
+  <NewLine Num="1" UId="164" />
+  <Blank Num="4" UId="165" />
+  <Token Text="ELSE" UId="166" />
+  <NewLine Num="1" UId="167" />
+  <Blank Num="8" UId="168" />
+  <Access Scope="GlobalVariable" UId="169">
+    <Symbol UId="170">
+      <Component Name="AHUAI" UId="171">
+        <BooleanAttribute Name="HasQuotes" UId="172">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="173" />
+      <Component Name="AI" UId="174" />
+      <Token Text="." UId="175" />
+      <Component Name="rRoomAirTemp_Actual" UId="176">
+        <Token Text="[" UId="177" />
+        <Access Scope="LocalVariable" UId="178">
+          <Symbol UId="179">
+            <Component Name="iUnitID" UId="180" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="181" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="182" />
+  <Token Text=":=" UId="183" />
+  <Blank Num="1" UId="184" />
+  <Access Scope="GlobalVariable" UId="185">
+    <Symbol UId="186">
+      <Component Name="AHUAI" UId="187">
+        <BooleanAttribute Name="HasQuotes" UId="188">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="189" />
+      <Component Name="AI" UId="190" />
+      <Token Text="." UId="191" />
+      <Component Name="rRoomAirTemp_PLC_AI" UId="192">
+        <Token Text="[" UId="193" />
+        <Access Scope="LocalVariable" UId="194">
+          <Symbol UId="195">
+            <Component Name="iUnitID" UId="196" />
+          </Symbol>
+        </Access>
+        <Token Text="]" UId="197" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="198" />
+  <NewLine Num="1" UId="199" />
+  <Token Text="END_CASE" UId="200" />
+  <Token Text=";" UId="201" />
+  <NewLine Num="1" UId="202" />
+</StructuredText></NetworkSource>
+          <ProgrammingLanguage>SCL</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="5" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="6" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>0=PLC_IO, 1=LoraAvg, 2=MSensor,3 =Auto</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="7" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="8" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="9" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Actual Room (salles area temp)</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="A" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="B" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="HVAC_Vars" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="rRATHeating" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="HVAC_Vars" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="rRATCooling" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="HVAC_Vars" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="rIAQ" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="HVAC_Vars" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="rBuildingdP" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Shift" />
+        <Component Name="RATHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Shift" />
+        <Component Name="RATCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Shift" />
+        <Component Name="IAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Shift" />
+        <Component Name="BuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="RATHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="RATCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="IAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="BuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="LocalVariable" UId="34">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="35">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="RATHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="36">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="RATCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="37">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="IAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="38">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Target" />
+        <Component Name="BuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="39">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="RATHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="40">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="RATCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="41">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="IAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="42">
+      <Symbol>
+        <Component Name="AHUSetPoints" />
+        <Component Name="SetPoints" />
+        <Component Name="Room" />
+        <Component Name="Actual" />
+        <Component Name="BuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="43">
+      <CallInfo Name="AHURoomSPTarget" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+        <Parameter Name="rActualStoreSPTempHeating" Section="Input" Type="Real" />
+        <Parameter Name="rActualStoreSPTempCooling" Section="Input" Type="Real" />
+        <Parameter Name="rActualStoreSPIAQ" Section="Input" Type="Real" />
+        <Parameter Name="rActualStoreSPdP" Section="Input" Type="Real" />
+        <Parameter Name="rAHUShiftTempHeatingSP" Section="Input" Type="Real" />
+        <Parameter Name="rAHUShiftTempCoolingSP" Section="Input" Type="Real" />
+        <Parameter Name="rAHUShiftIAQSP" Section="Input" Type="Real" />
+        <Parameter Name="rAHUShiftdPSP" Section="Input" Type="Real" />
+        <Parameter Name="rTargetAHUTempHeatingSP" Section="Output" Type="Real" />
+        <Parameter Name="rTargetAHUTempCoolingSP" Section="Output" Type="Real" />
+        <Parameter Name="rTargetAHUIAQSP" Section="Output" Type="Real" />
+        <Parameter Name="rTargetAHUdPSP" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+    <Call UId="44">
+      <CallInfo Name="AHURoomSPActual" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+        <Parameter Name="rTargetAHUSPTempHeating" Section="Input" Type="Real" />
+        <Parameter Name="rTargetAHUSPTempCooling" Section="Input" Type="Real" />
+        <Parameter Name="rTargetAHUSPIAQ" Section="Input" Type="Real" />
+        <Parameter Name="rTargetAHUSPdP" Section="Input" Type="Real" />
+        <Parameter Name="rActualAHUTempHeatingSP" Section="Output" Type="Real" />
+        <Parameter Name="rActualAHUTempCoolingSP" Section="Output" Type="Real" />
+        <Parameter Name="rActualAHUIAQSP" Section="Output" Type="Real" />
+        <Parameter Name="rActualAHUdPSP" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="47">
+      <OpenCon UId="45" />
+      <NameCon UId="43" Name="en" />
+    </Wire>
+    <Wire UId="48">
+      <IdentCon UId="21" />
+      <NameCon UId="43" Name="iUnitID" />
+    </Wire>
+    <Wire UId="49">
+      <IdentCon UId="22" />
+      <NameCon UId="43" Name="rActualStoreSPTempHeating" />
+    </Wire>
+    <Wire UId="50">
+      <IdentCon UId="23" />
+      <NameCon UId="43" Name="rActualStoreSPTempCooling" />
+    </Wire>
+    <Wire UId="51">
+      <IdentCon UId="24" />
+      <NameCon UId="43" Name="rActualStoreSPIAQ" />
+    </Wire>
+    <Wire UId="52">
+      <IdentCon UId="25" />
+      <NameCon UId="43" Name="rActualStoreSPdP" />
+    </Wire>
+    <Wire UId="53">
+      <IdentCon UId="26" />
+      <NameCon UId="43" Name="rAHUShiftTempHeatingSP" />
+    </Wire>
+    <Wire UId="54">
+      <IdentCon UId="27" />
+      <NameCon UId="43" Name="rAHUShiftTempCoolingSP" />
+    </Wire>
+    <Wire UId="55">
+      <IdentCon UId="28" />
+      <NameCon UId="43" Name="rAHUShiftIAQSP" />
+    </Wire>
+    <Wire UId="56">
+      <IdentCon UId="29" />
+      <NameCon UId="43" Name="rAHUShiftdPSP" />
+    </Wire>
+    <Wire UId="57">
+      <NameCon UId="43" Name="rTargetAHUTempHeatingSP" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="58">
+      <NameCon UId="43" Name="rTargetAHUTempCoolingSP" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="59">
+      <NameCon UId="43" Name="rTargetAHUIAQSP" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="60">
+      <NameCon UId="43" Name="rTargetAHUdPSP" />
+      <IdentCon UId="33" />
+    </Wire>
+    <Wire UId="61">
+      <OpenCon UId="46" />
+      <NameCon UId="44" Name="en" />
+    </Wire>
+    <Wire UId="62">
+      <IdentCon UId="34" />
+      <NameCon UId="44" Name="iUnitID" />
+    </Wire>
+    <Wire UId="63">
+      <IdentCon UId="35" />
+      <NameCon UId="44" Name="rTargetAHUSPTempHeating" />
+    </Wire>
+    <Wire UId="64">
+      <IdentCon UId="36" />
+      <NameCon UId="44" Name="rTargetAHUSPTempCooling" />
+    </Wire>
+    <Wire UId="65">
+      <IdentCon UId="37" />
+      <NameCon UId="44" Name="rTargetAHUSPIAQ" />
+    </Wire>
+    <Wire UId="66">
+      <IdentCon UId="38" />
+      <NameCon UId="44" Name="rTargetAHUSPdP" />
+    </Wire>
+    <Wire UId="67">
+      <NameCon UId="44" Name="rActualAHUTempHeatingSP" />
+      <IdentCon UId="39" />
+    </Wire>
+    <Wire UId="68">
+      <NameCon UId="44" Name="rActualAHUTempCoolingSP" />
+      <IdentCon UId="40" />
+    </Wire>
+    <Wire UId="69">
+      <NameCon UId="44" Name="rActualAHUIAQSP" />
+      <IdentCon UId="41" />
+    </Wire>
+    <Wire UId="70">
+      <NameCon UId="44" Name="rActualAHUdPSP" />
+      <IdentCon UId="42" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="C" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="D" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="F" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="10" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>AHUs SetPoints define</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="11" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="12" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LocalVariable" UId="21">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="22">
+      <Symbol>
+        <Component Name="AHUOpModes" />
+        <Component Name="OpModes" />
+        <Component Name="cActual" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Cfg" />
+        <Component Name="cTempHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Cfg" />
+        <Component Name="cTempCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Cfg" />
+        <Component Name="cIAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Cfg" />
+        <Component Name="cBuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="AHUAlarms" />
+        <Component Name="Summary" />
+        <Component Name="BlockingAlarm" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="AHUAlarms" />
+        <Component Name="Summary" />
+        <Component Name="FrostAlarm" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="AHUUnitStates" />
+        <Component Name="UnitStates" />
+        <Component Name="cTarget" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="30">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cTempHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="31">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cTempCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="32">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cIAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="33">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cBuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="34">
+      <CallInfo Name="AHURegsCtrl" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+        <Parameter Name="cActualOpMode" Section="Input" Type="Byte" />
+        <Parameter Name="cHeatingRegCfg" Section="Input" Type="Byte" />
+        <Parameter Name="cCoolingRegCfg" Section="Input" Type="Byte" />
+        <Parameter Name="cIAQRegCfg" Section="Input" Type="Byte" />
+        <Parameter Name="cBuildingdPRegCfg" Section="Input" Type="Byte" />
+        <Parameter Name="xOtherBlockingAlarm" Section="Input" Type="Bool" />
+        <Parameter Name="xFrostProtBlocking" Section="Input" Type="Bool" />
+        <Parameter Name="cTargetState" Section="Output" Type="Byte" />
+        <Parameter Name="cHeatingRegState" Section="Output" Type="Byte" />
+        <Parameter Name="cCoolingRegState" Section="Output" Type="Byte" />
+        <Parameter Name="cIAQRegState" Section="Output" Type="Byte" />
+        <Parameter Name="cBuildingdPRegState" Section="Output" Type="Byte" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="36">
+      <OpenCon UId="35" />
+      <NameCon UId="34" Name="en" />
+    </Wire>
+    <Wire UId="37">
+      <IdentCon UId="21" />
+      <NameCon UId="34" Name="iUnitID" />
+    </Wire>
+    <Wire UId="38">
+      <IdentCon UId="22" />
+      <NameCon UId="34" Name="cActualOpMode" />
+    </Wire>
+    <Wire UId="39">
+      <IdentCon UId="23" />
+      <NameCon UId="34" Name="cHeatingRegCfg" />
+    </Wire>
+    <Wire UId="40">
+      <IdentCon UId="24" />
+      <NameCon UId="34" Name="cCoolingRegCfg" />
+    </Wire>
+    <Wire UId="41">
+      <IdentCon UId="25" />
+      <NameCon UId="34" Name="cIAQRegCfg" />
+    </Wire>
+    <Wire UId="42">
+      <IdentCon UId="26" />
+      <NameCon UId="34" Name="cBuildingdPRegCfg" />
+    </Wire>
+    <Wire UId="43">
+      <IdentCon UId="27" />
+      <NameCon UId="34" Name="xOtherBlockingAlarm" />
+    </Wire>
+    <Wire UId="44">
+      <IdentCon UId="28" />
+      <NameCon UId="34" Name="xFrostProtBlocking" />
+    </Wire>
+    <Wire UId="45">
+      <NameCon UId="34" Name="cTargetState" />
+      <IdentCon UId="29" />
+    </Wire>
+    <Wire UId="46">
+      <NameCon UId="34" Name="cHeatingRegState" />
+      <IdentCon UId="30" />
+    </Wire>
+    <Wire UId="47">
+      <NameCon UId="34" Name="cCoolingRegState" />
+      <IdentCon UId="31" />
+    </Wire>
+    <Wire UId="48">
+      <NameCon UId="34" Name="cIAQRegState" />
+      <IdentCon UId="32" />
+    </Wire>
+    <Wire UId="49">
+      <NameCon UId="34" Name="cBuildingdPRegState" />
+      <IdentCon UId="33" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="13" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="14" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="15" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="16" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="17" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Regulators and Target State Controls</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="18" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="19" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cTempHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cTempCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cIAQ" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="State" />
+        <Component Name="cBuildingdP" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Demands" />
+        <Component Name="rHeating" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Demands" />
+        <Component Name="rCooling" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="29">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Demands" />
+        <Component Name="rFreshAirSummary" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="30">
+      <CallInfo Name="AHUDemands" BlockType="FC">
+        <Parameter Name="iUnitID" Section="Input" Type="Int" />
+        <Parameter Name="cHeatingRegState" Section="Input" Type="Byte" />
+        <Parameter Name="cCoolingRegState" Section="Input" Type="Byte" />
+        <Parameter Name="cIAQRegState" Section="Input" Type="Byte" />
+        <Parameter Name="cBuildingdPRegState" Section="Input" Type="Byte" />
+        <Parameter Name="rHeaterDemand" Section="Output" Type="Real" />
+        <Parameter Name="rCoolerDemand" Section="Output" Type="Real" />
+        <Parameter Name="rFreshAirDemand" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="31">
+      <IdentCon UId="21" />
+      <NameCon UId="30" Name="en" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="22" />
+      <NameCon UId="30" Name="iUnitID" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="23" />
+      <NameCon UId="30" Name="cHeatingRegState" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="24" />
+      <NameCon UId="30" Name="cCoolingRegState" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="25" />
+      <NameCon UId="30" Name="cIAQRegState" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="26" />
+      <NameCon UId="30" Name="cBuildingdPRegState" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="30" Name="rHeaterDemand" />
+      <IdentCon UId="27" />
+    </Wire>
+    <Wire UId="38">
+      <NameCon UId="30" Name="rCoolerDemand" />
+      <IdentCon UId="28" />
+    </Wire>
+    <Wire UId="39">
+      <NameCon UId="30" Name="rFreshAirDemand" />
+      <IdentCon UId="29" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="1A" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="1B" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>Regulator State -> Demands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1C" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="1D" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="1E" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>AHUDemands</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="1F" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <SW.Blocks.CompileUnit ID="20" CompositionName="CompileUnits">
+        <AttributeList>
+          <NetworkSource><FlgNet xmlns="http://www.siemens.com/automation/Openness/SW/NetworkSource/FlgNet/v4">
+  <Parts>
+    <Access Scope="LiteralConstant" UId="21">
+      <Constant>
+        <ConstantType>Bool</ConstantType>
+        <ConstantValue>0</ConstantValue>
+      </Constant>
+    </Access>
+    <Access Scope="LocalVariable" UId="22">
+      <Symbol>
+        <Component Name="iUnitID" />
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="23">
+      <Symbol>
+        <Component Name="AHUAI" />
+        <Component Name="AI" />
+        <Component Name="rSupplyAirTemp" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="24">
+      <Symbol>
+        <Component Name="AHUAI" />
+        <Component Name="AI" />
+        <Component Name="rFrostProtAirTemp" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="25">
+      <Symbol>
+        <Component Name="AHUAI" />
+        <Component Name="AI" />
+        <Component Name="rFrostProtWaterTemp" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="26">
+      <Symbol>
+        <Component Name="AHUDI" />
+        <Component Name="DI" />
+        <Component Name="xFrostProtTstat" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="27">
+      <Symbol>
+        <Component Name="AHUAI" />
+        <Component Name="AI" />
+        <Component Name="rReserve" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Access Scope="GlobalVariable" UId="28">
+      <Symbol>
+        <Component Name="AHURegulators" />
+        <Component Name="Regulators" />
+        <Component Name="Demands" />
+        <Component Name="rFrostProtection" AccessModifier="Array">
+          <Access Scope="LocalVariable">
+            <Symbol>
+              <Component Name="iUnitID" />
+            </Symbol>
+          </Access>
+        </Component>
+      </Symbol>
+    </Access>
+    <Call UId="29">
+      <CallInfo Name="AHUFrostProtectionDemand" BlockType="FC">
+        <Parameter Name="UnitID" Section="Input" Type="Int" />
+        <Parameter Name="SupplyAirTemp" Section="Input" Type="Real" />
+        <Parameter Name="FrostSensorAirTemp" Section="Input" Type="Real" />
+        <Parameter Name="FrostSensorWaterTemp" Section="Input" Type="Real" />
+        <Parameter Name="FrostTstat" Section="Input" Type="Bool" />
+        <Parameter Name="OutdoorAirTemperature" Section="Input" Type="Real" />
+        <Parameter Name="FrostProtectionDemand" Section="Output" Type="Real" />
+      </CallInfo>
+    </Call>
+  </Parts>
+  <Wires>
+    <Wire UId="30">
+      <IdentCon UId="21" />
+      <NameCon UId="29" Name="en" />
+    </Wire>
+    <Wire UId="31">
+      <IdentCon UId="22" />
+      <NameCon UId="29" Name="UnitID" />
+    </Wire>
+    <Wire UId="32">
+      <IdentCon UId="23" />
+      <NameCon UId="29" Name="SupplyAirTemp" />
+    </Wire>
+    <Wire UId="33">
+      <IdentCon UId="24" />
+      <NameCon UId="29" Name="FrostSensorAirTemp" />
+    </Wire>
+    <Wire UId="34">
+      <IdentCon UId="25" />
+      <NameCon UId="29" Name="FrostSensorWaterTemp" />
+    </Wire>
+    <Wire UId="35">
+      <IdentCon UId="26" />
+      <NameCon UId="29" Name="FrostTstat" />
+    </Wire>
+    <Wire UId="36">
+      <IdentCon UId="27" />
+      <NameCon UId="29" Name="OutdoorAirTemperature" />
+    </Wire>
+    <Wire UId="37">
+      <NameCon UId="29" Name="FrostProtectionDemand" />
+      <IdentCon UId="28" />
+    </Wire>
+  </Wires>
+</FlgNet></NetworkSource>
+          <ProgrammingLanguage>FBD</ProgrammingLanguage>
+        </AttributeList>
+        <ObjectList>
+          <MultilingualText ID="21" CompositionName="Comment">
+            <ObjectList>
+              <MultilingualTextItem ID="22" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="23" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+          <MultilingualText ID="24" CompositionName="Title">
+            <ObjectList>
+              <MultilingualTextItem ID="25" CompositionName="Items">
+                <AttributeList>
+                  <Culture>en-US</Culture>
+                  <Text>FrostProtection demand(0-100%) defining</Text>
+                </AttributeList>
+              </MultilingualTextItem>
+              <MultilingualTextItem ID="26" CompositionName="Items">
+                <AttributeList>
+                  <Culture>uk-UA</Culture>
+                  <Text />
+                </AttributeList>
+              </MultilingualTextItem>
+            </ObjectList>
+          </MultilingualText>
+        </ObjectList>
+      </SW.Blocks.CompileUnit>
+      <MultilingualText ID="27" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="28" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="29" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.FC>
+</Document>

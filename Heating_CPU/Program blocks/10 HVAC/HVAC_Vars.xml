@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <AutoNumber>false</AutoNumber>
+      <DBAccessibleFromOPCUA>true</DBAccessibleFromOPCUA>
+      <HeaderAuthor />
+      <HeaderFamily />
+      <HeaderName />
+      <HeaderVersion>0.1</HeaderVersion>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="Season" Datatype="&quot;UDT_Store_Season&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="cSeasonModeSelection" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cActual" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">0 = Summer  1 = Winter 2 = Midseason, 3=Auro</MultiLanguageText>
+            </Comment>
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cTarget" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cReserve" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="rOATtoWinter" Datatype="Real">
+            <StartValue>10.0</StartValue>
+          </Member>
+          <Member Name="rOATtoSummer" Datatype="Real">
+            <StartValue>12.0</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="SetPoints" Datatype="&quot;UDT_Store_Setpoints&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="Room" Datatype="Struct">
+            <Member Name="Actual" Datatype="Struct">
+              <Member Name="rRATHeating" Datatype="Real">
+                <StartValue>5.0</StartValue>
+              </Member>
+              <Member Name="rRATCooling" Datatype="Real">
+                <StartValue>35.0</StartValue>
+              </Member>
+              <Member Name="rIAQ" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+              <Member Name="rBuildingdP" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+            </Member>
+            <Member Name="Comfort" Datatype="Struct">
+              <Member Name="rRATHeating" Datatype="Real">
+                <StartValue>18.0</StartValue>
+              </Member>
+              <Member Name="rRATCooling" Datatype="Real">
+                <StartValue>22.0</StartValue>
+              </Member>
+              <Member Name="rIAQ" Datatype="Real">
+                <StartValue>600.0</StartValue>
+              </Member>
+              <Member Name="rBuildingdP" Datatype="Real">
+                <StartValue>5.0</StartValue>
+              </Member>
+            </Member>
+            <Member Name="PreComfort" Datatype="Struct">
+              <Member Name="rRATHeating" Datatype="Real">
+                <StartValue>16.0</StartValue>
+              </Member>
+              <Member Name="rRATCooling" Datatype="Real">
+                <StartValue>25.0</StartValue>
+              </Member>
+              <Member Name="rIAQ" Datatype="Real">
+                <StartValue>800.0</StartValue>
+              </Member>
+              <Member Name="rBuildingdP" Datatype="Real">
+                <StartValue>2.0</StartValue>
+              </Member>
+            </Member>
+            <Member Name="Econom" Datatype="Struct">
+              <Member Name="rRATHeating" Datatype="Real">
+                <StartValue>15.0</StartValue>
+              </Member>
+              <Member Name="rRATCooling" Datatype="Real">
+                <StartValue>30.0</StartValue>
+              </Member>
+              <Member Name="rIAQ" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+              <Member Name="rBuildingdP" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+            </Member>
+            <Member Name="Protection" Datatype="Struct">
+              <Member Name="rRATHeating" Datatype="Real">
+                <StartValue>5.0</StartValue>
+              </Member>
+              <Member Name="rRATCooling" Datatype="Real">
+                <StartValue>35.0</StartValue>
+              </Member>
+              <Member Name="rIAQ" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+              <Member Name="rBuildingdP" Datatype="Real">
+                <StartValue>0.0</StartValue>
+              </Member>
+            </Member>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="OpModes" Datatype="&quot;UDT_Store_OpMode&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="cPreviousOne" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cActual" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cTarget" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+          <Member Name="cPreselectedOpMode" Datatype="Byte">
+            <StartValue>16#00</StartValue>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="WeekScheduler" Datatype="&quot;UDT_Store_Scheduler&quot;" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Sections>
+        <Section Name="None">
+          <Member Name="cOpModeNowByScheduler" Datatype="Byte">
+            <Comment>
+              <MultiLanguageText Lang="en-US">0 - Prot/ 1-Eco/ 2-PreComf/ 3- Comf/ 4 - Auto</MultiLanguageText>
+            </Comment>
+            <StartValue>16#02</StartValue>
+          </Member>
+          <Member Name="Monday" Datatype="Struct">
+            <Member Name="Comfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#06:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#21:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="PreComfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#04:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#23:59:59</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="WorkingDays" Datatype="Struct">
+            <Member Name="Comfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#06:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#21:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="PreComfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#23:59:59</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Saturday" Datatype="Struct">
+            <Member Name="Comfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#06:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#21:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="PreComfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#22:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Sunday" Datatype="Struct">
+            <Member Name="Comfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#06:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#18:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="PreComfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#05:30:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#22:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+          <Member Name="Holiday" Datatype="Struct">
+            <Member Name="Comfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+            <Member Name="PreComfort" Datatype="&quot;UDT_DailyScheduler&quot;">
+              <Sections>
+                <Section Name="None">
+                  <Member Name="Start" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                  <Member Name="Stop" Datatype="Time_Of_Day">
+                    <StartValue>TOD#00:00:00</StartValue>
+                  </Member>
+                </Section>
+              </Sections>
+            </Member>
+          </Member>
+        </Section>
+      </Sections>
+    </Member>
+    <Member Name="RoomTempSetPointforHMI" Datatype="Real" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <StartValue>35.0</StartValue>
+    </Member>
+    <Member Name="Holidays" Datatype="Array[1..4] of Date" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">true</BooleanAttribute>
+      </AttributeList>
+      <Subelement Path="1">
+        <StartValue>D#2026-01-01</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>D#2026-04-12</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>D#2027-01-01</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="xIsHoliday" Datatype="Bool" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>FALSE</StartValue>
+    </Member>
+    <Member Name="cDayType" Datatype="Byte" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <Comment>
+        <MultiLanguageText Lang="en-US">0-WD,1-Mon,2-Cуб,3-Нед,4-Свят</MultiLanguageText>
+      </Comment>
+      <StartValue>16#01</StartValue>
+    </Member>
+    <Member Name="CurrentDate" Datatype="Date" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>D#2026-04-20</StartValue>
+    </Member>
+    <Member Name="CurrentTOD" Datatype="Time_Of_Day" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>TOD#22:03:20.160</StartValue>
+    </Member>
+    <Member Name="iRetVal" Datatype="Int" Remanence="NonRetain" Accessibility="Public">
+      <AttributeList>
+        <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="ExternalWritable" SystemDefined="true">true</BooleanAttribute>
+        <BooleanAttribute Name="SetPoint" SystemDefined="true">false</BooleanAttribute>
+      </AttributeList>
+      <StartValue>1</StartValue>
+    </Member>
+  </Section>
+</Sections></Interface>
+      <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
+      <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
+      <MemoryLayout>Standard</MemoryLayout>
+      <Name>HVAC_Vars</Name>
+      <Namespace />
+      <Number>99</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="3" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="4" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="5" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+          <MultilingualTextItem ID="6" CompositionName="Items">
+            <AttributeList>
+              <Culture>uk-UA</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>

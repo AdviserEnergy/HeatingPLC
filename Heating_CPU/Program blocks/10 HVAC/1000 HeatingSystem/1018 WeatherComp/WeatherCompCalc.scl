@@ -1,0 +1,38 @@
+﻿FUNCTION "WeatherCompCalc" : Void
+{ S7_Optimized_Access := 'TRUE' }
+VERSION : 0.1
+   VAR_INPUT 
+      rOutdoorAirTemp : Real;
+      rEffectiveRoomTempSetpoint : Real;
+      rHeatingCurveLevel : Real;
+      rHeatingCurveSlope : Real;
+   END_VAR
+
+   VAR_OUTPUT 
+      rFlowWaterTemp : Real;
+      rOAT_Actual : Real;
+   END_VAR
+
+   VAR_TEMP 
+      rTemp : Real;
+   END_VAR
+
+
+BEGIN
+	IF (#rEffectiveRoomTempSetpoint > #rOutdoorAirTemp) THEN
+	    #rTemp := #rEffectiveRoomTempSetpoint + #rHeatingCurveSlope * 1.91 * EXP(0.816 * LN(#rEffectiveRoomTempSetpoint - #rOutdoorAirTemp)) + #rHeatingCurveLevel;
+	ELSE
+	    #rTemp := #rEffectiveRoomTempSetpoint;
+	END_IF;
+	
+	IF #rTemp > 90 THEN
+	    #rFlowWaterTemp := 90;
+	ELSIF #rTemp < #rEffectiveRoomTempSetpoint THEN
+	    #rFlowWaterTemp := #rEffectiveRoomTempSetpoint;
+	ELSE
+	    #rFlowWaterTemp := #rTemp;
+	END_IF;
+	
+	#rOAT_Actual := #rOutdoorAirTemp;
+END_FUNCTION
+
