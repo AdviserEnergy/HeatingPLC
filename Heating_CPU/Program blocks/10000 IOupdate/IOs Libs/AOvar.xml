@@ -87,7 +87,7 @@
   <Token Text=".." UId="47" />
   <Access Scope="LiteralConstant" UId="48">
     <Constant UId="49">
-      <ConstantValue UId="51">3</ConstantValue>
+      <ConstantValue UId="51">4</ConstantValue>
     </Constant>
   </Access>
   <Token Text=":" UId="52" />
@@ -381,13 +381,13 @@
   <Blank Num="4" UId="275" />
   <Access Scope="LiteralConstant" UId="276">
     <Constant UId="277">
-      <ConstantValue UId="279">4</ConstantValue>
+      <ConstantValue UId="279">5</ConstantValue>
     </Constant>
   </Access>
   <Token Text=".." UId="280" />
   <Access Scope="LiteralConstant" UId="281">
     <Constant UId="282">
-      <ConstantValue UId="284">20</ConstantValue>
+      <ConstantValue UId="284">9</ConstantValue>
     </Constant>
   </Access>
   <Token Text=":" UId="285" />
@@ -398,13 +398,13 @@
   <Blank Num="4" UId="290" />
   <Access Scope="LiteralConstant" UId="291">
     <Constant UId="292">
-      <ConstantValue UId="294">21</ConstantValue>
+      <ConstantValue UId="294">10</ConstantValue>
     </Constant>
   </Access>
   <Token Text=":" UId="295" />
   <Blank Num="1" UId="296" />
   <LineComment Inserted="false" NoClosingBracket="false" UId="297">
-    <Text UId="298">Proxy Channels    </Text>
+    <Text UId="298"> HS+HC    </Text>
   </LineComment>
   <NewLine Num="1" UId="299" />
   <Blank Num="8" UId="300" />
@@ -427,7 +427,7 @@
   <Token Text=":" UId="314" />
   <Blank Num="2" UId="315" />
   <LineComment Inserted="false" NoClosingBracket="false" UId="316">
-    <Text UId="317" />
+    <Text UId="317"> </Text>
   </LineComment>
   <NewLine Num="1" UId="318" />
   <Blank Num="16" UId="319" />
@@ -439,71 +439,214 @@
       <ConstantValue UId="326">1</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=".." UId="327" />
-  <Access Scope="LiteralConstant" UId="328">
-    <Constant UId="329">
-      <ConstantValue UId="331">8</ConstantValue>
+  <Token Text=":" UId="327" />
+  <Blank Num="2" UId="328" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="329">
+    <Text UId="330">         </Text>
+  </LineComment>
+  <NewLine Num="1" UId="331" />
+  <Blank Num="16" UId="332" />
+  <Access Scope="LocalVariable" UId="333">
+    <Symbol UId="334">
+      <Component Name="rOutput" UId="335" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="336" />
+  <Token Text=":=" UId="337" />
+  <Blank Num="1" UId="338" />
+  <Access Scope="GlobalVariable" UId="339">
+    <Symbol UId="340">
+      <Component Name="HCsAO" UId="341">
+        <BooleanAttribute Name="HasQuotes" UId="342">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="343" />
+      <Component Name="AO" UId="344" />
+      <Token Text="." UId="345" />
+      <Component Name="rHC3vwCtrl" UId="346">
+        <Token Text="[" UId="347" />
+        <Access Scope="LiteralConstant" UId="348">
+          <Constant UId="349">
+            <ConstantValue UId="351">1</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="352" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="353" />
+  <NewLine Num="1" UId="354" />
+  <Blank Num="12" UId="355" />
+  <Access Scope="LiteralConstant" UId="356">
+    <Constant UId="357">
+      <ConstantValue UId="359">2</ConstantValue>
     </Constant>
   </Access>
-  <Token Text=":" UId="332" />
-  <Blank Num="2" UId="333" />
-  <LineComment Inserted="false" NoClosingBracket="false" UId="334">
-    <Text UId="335" />
+  <Token Text=":" UId="360" />
+  <Blank Num="2" UId="361" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="362">
+    <Text UId="363">         </Text>
   </LineComment>
-  <NewLine Num="1" UId="336" />
-  <Blank Num="16" UId="337" />
-  <Access Scope="LocalVariable" UId="338">
-    <Symbol UId="339">
-      <Component Name="rOutput" UId="340" />
+  <NewLine Num="1" UId="364" />
+  <Blank Num="16" UId="365" />
+  <Access Scope="LocalVariable" UId="366">
+    <Symbol UId="367">
+      <Component Name="rOutput" UId="368" />
     </Symbol>
   </Access>
-  <Blank Num="1" UId="341" />
-  <Token Text=":=" UId="342" />
-  <Blank Num="1" UId="343" />
-  <Access Scope="GlobalVariable" UId="344">
-    <Symbol UId="345">
-      <Component Name="AHUProxyCH" UId="346">
-        <BooleanAttribute Name="HasQuotes" UId="347">true</BooleanAttribute>
+  <Blank Num="1" UId="369" />
+  <Token Text=":=" UId="370" />
+  <Blank Num="1" UId="371" />
+  <Access Scope="GlobalVariable" UId="372">
+    <Symbol UId="373">
+      <Component Name="HCsAO" UId="374">
+        <BooleanAttribute Name="HasQuotes" UId="375">true</BooleanAttribute>
       </Component>
-      <Token Text="." UId="348" />
-      <Component Name="Vars" UId="349" />
-      <Token Text="." UId="350" />
-      <Component Name="rCHProxySignal" UId="351">
-        <Token Text="[" UId="352" />
-        <Access Scope="LocalVariable" UId="353">
-          <Symbol UId="354">
-            <Component Name="iFuncVar" UId="355" />
+      <Token Text="." UId="376" />
+      <Component Name="AO" UId="377" />
+      <Token Text="." UId="378" />
+      <Component Name="rHC3vwCtrl" UId="379">
+        <Token Text="[" UId="380" />
+        <Access Scope="LiteralConstant" UId="381">
+          <Constant UId="382">
+            <ConstantValue UId="384">2</ConstantValue>
+          </Constant>
+        </Access>
+        <Token Text="]" UId="385" />
+      </Component>
+    </Symbol>
+  </Access>
+  <Token Text=";" UId="386" />
+  <NewLine Num="1" UId="387" />
+  <Blank Num="8" UId="388" />
+  <Token Text="END_CASE" UId="389" />
+  <Token Text=";" UId="390" />
+  <NewLine Num="1" UId="391" />
+  <Blank Num="4" UId="392" />
+  <Access Scope="LiteralConstant" UId="393">
+    <Constant UId="394">
+      <ConstantValue UId="396">11</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=".." UId="397" />
+  <Access Scope="LiteralConstant" UId="398">
+    <Constant UId="399">
+      <ConstantValue UId="401">20</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="402" />
+  <NewLine Num="1" UId="403" />
+  <Blank Num="8" UId="404" />
+  <Token Text=";" UId="405" />
+  <NewLine Num="1" UId="406" />
+  <Blank Num="4" UId="407" />
+  <Access Scope="LiteralConstant" UId="408">
+    <Constant UId="409">
+      <ConstantValue UId="411">21</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="412" />
+  <Blank Num="1" UId="413" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="414">
+    <Text UId="415">Proxy Channels    </Text>
+  </LineComment>
+  <NewLine Num="1" UId="416" />
+  <Blank Num="8" UId="417" />
+  <Token Text="CASE" UId="418" />
+  <Blank Num="1" UId="419" />
+  <Access Scope="LocalVariable" UId="420">
+    <Symbol UId="421">
+      <Component Name="iFuncVar" UId="422" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="423" />
+  <Token Text="OF" UId="424" />
+  <NewLine Num="1" UId="425" />
+  <Blank Num="12" UId="426" />
+  <Access Scope="LiteralConstant" UId="427">
+    <Constant UId="428">
+      <ConstantValue UId="430">0</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="431" />
+  <Blank Num="2" UId="432" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="433">
+    <Text UId="434" />
+  </LineComment>
+  <NewLine Num="1" UId="435" />
+  <Blank Num="16" UId="436" />
+  <Token Text=";" UId="437" />
+  <NewLine Num="1" UId="438" />
+  <Blank Num="12" UId="439" />
+  <Access Scope="LiteralConstant" UId="440">
+    <Constant UId="441">
+      <ConstantValue UId="443">1</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=".." UId="444" />
+  <Access Scope="LiteralConstant" UId="445">
+    <Constant UId="446">
+      <ConstantValue UId="448">8</ConstantValue>
+    </Constant>
+  </Access>
+  <Token Text=":" UId="449" />
+  <Blank Num="2" UId="450" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="451">
+    <Text UId="452" />
+  </LineComment>
+  <NewLine Num="1" UId="453" />
+  <Blank Num="16" UId="454" />
+  <Access Scope="LocalVariable" UId="455">
+    <Symbol UId="456">
+      <Component Name="rOutput" UId="457" />
+    </Symbol>
+  </Access>
+  <Blank Num="1" UId="458" />
+  <Token Text=":=" UId="459" />
+  <Blank Num="1" UId="460" />
+  <Access Scope="GlobalVariable" UId="461">
+    <Symbol UId="462">
+      <Component Name="AHUProxyCH" UId="463">
+        <BooleanAttribute Name="HasQuotes" UId="464">true</BooleanAttribute>
+      </Component>
+      <Token Text="." UId="465" />
+      <Component Name="Vars" UId="466" />
+      <Token Text="." UId="467" />
+      <Component Name="rCHProxySignal" UId="468">
+        <Token Text="[" UId="469" />
+        <Access Scope="LocalVariable" UId="470">
+          <Symbol UId="471">
+            <Component Name="iFuncVar" UId="472" />
           </Symbol>
         </Access>
-        <Token Text="]" UId="356" />
+        <Token Text="]" UId="473" />
       </Component>
     </Symbol>
   </Access>
-  <Token Text=";" UId="357" />
-  <NewLine Num="1" UId="358" />
-  <Blank Num="12" UId="359" />
-  <Token Text="ELSE" UId="360" />
-  <NewLine Num="1" UId="361" />
-  <Blank Num="16" UId="362" />
-  <Token Text=";" UId="363" />
-  <NewLine Num="1" UId="364" />
-  <Blank Num="8" UId="365" />
-  <Token Text="END_CASE" UId="366" />
-  <Token Text=";" UId="367" />
-  <NewLine Num="1" UId="368" />
-  <Blank Num="4" UId="369" />
-  <Token Text="ELSE" UId="370" />
-  <Blank Num="2" UId="371" />
-  <LineComment Inserted="false" NoClosingBracket="false" UId="372">
-    <Text UId="373"> Statement section ELSE</Text>
+  <Token Text=";" UId="474" />
+  <NewLine Num="1" UId="475" />
+  <Blank Num="12" UId="476" />
+  <Token Text="ELSE" UId="477" />
+  <NewLine Num="1" UId="478" />
+  <Blank Num="16" UId="479" />
+  <Token Text=";" UId="480" />
+  <NewLine Num="1" UId="481" />
+  <Blank Num="8" UId="482" />
+  <Token Text="END_CASE" UId="483" />
+  <Token Text=";" UId="484" />
+  <NewLine Num="1" UId="485" />
+  <Blank Num="4" UId="486" />
+  <Token Text="ELSE" UId="487" />
+  <Blank Num="2" UId="488" />
+  <LineComment Inserted="false" NoClosingBracket="false" UId="489">
+    <Text UId="490"> Statement section ELSE</Text>
   </LineComment>
-  <NewLine Num="1" UId="374" />
-  <Blank Num="8" UId="375" />
-  <Token Text=";" UId="376" />
-  <NewLine Num="1" UId="377" />
-  <Token Text="END_CASE" UId="378" />
-  <Token Text=";" UId="379" />
-  <NewLine Num="1" UId="380" />
+  <NewLine Num="1" UId="491" />
+  <Blank Num="8" UId="492" />
+  <Token Text=";" UId="493" />
+  <NewLine Num="1" UId="494" />
+  <Token Text="END_CASE" UId="495" />
+  <Token Text=";" UId="496" />
+  <NewLine Num="1" UId="497" />
 </StructuredText></NetworkSource>
           <ProgrammingLanguage>SCL</ProgrammingLanguage>
         </AttributeList>
