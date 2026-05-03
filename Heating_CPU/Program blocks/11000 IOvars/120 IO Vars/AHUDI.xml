@@ -11,7 +11,7 @@
       <HeaderVersion>0.1</HeaderVersion>
       <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
   <Section Name="Static">
-    <Member Name="Requests" Datatype="&quot;UDT_HSsDI&quot;" Remanence="NonRetain" Accessibility="Public">
+    <Member Name="DI" Datatype="&quot;UDT_AHUsDI&quot;" Remanence="Retain" Accessibility="Public">
       <AttributeList>
         <BooleanAttribute Name="ExternalAccessible" SystemDefined="true">true</BooleanAttribute>
         <BooleanAttribute Name="ExternalVisible" SystemDefined="true">true</BooleanAttribute>
@@ -20,19 +20,32 @@
       </AttributeList>
       <Sections>
         <Section Name="None">
-          <Member Name="xBoilerShuntPumpReady" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerShuntPumpInd" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerShuntPumpAlarm" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerShuntPumpInAuto" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerStage1Ind" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerStage2Ind" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBurnerAlarm" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerAlarm" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerReady" Datatype="Array[1..2] of Bool" />
-          <Member Name="xBoilerReserve" Datatype="Array[1..2] of Bool" />
-          <Member Name="xSeasonWinter" Datatype="Array[1..2] of Bool" />
-          <Member Name="xSeasonSummer" Datatype="Array[1..2] of Bool" />
-          <Member Name="xSeasonAuto" Datatype="Array[1..2] of Bool" />
+          <Member Name="xHeaterPumpReady" Datatype="Array[1..3] of Bool" />
+          <Member Name="xHeaterPumpInd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xHeaterPumpAlarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFAnalogReady" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFAnalogInd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFAnalogAlarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp1Ready" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp1Ind" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp1Alarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp2Ready" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp2Ind" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFSp2Alarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFdPInd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xFrostProtTstat" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFdPAlarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFPanelSelectorOff" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFPanelSelector1St" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFPanelSelector2St" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFPanelSelectorAuto" Datatype="Array[1..3] of Bool" />
+          <Member Name="xSAFMotorPTCAlarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xServiceSwitchOnAHU" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerAlarm" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerC1Ind" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerC2Ind" Datatype="Array[1..3] of Bool" />
+          <Member Name="xFilterdP" Datatype="Array[1..3] of Bool" />
+          <Member Name="xHeaterPumpModeInAuto" Datatype="Array[1..3] of Bool" />
         </Section>
       </Sections>
     </Member>
@@ -41,9 +54,9 @@
       <IsOnlyStoredInLoadMemory>false</IsOnlyStoredInLoadMemory>
       <IsWriteProtectedInAS>false</IsWriteProtectedInAS>
       <MemoryLayout>Standard</MemoryLayout>
-      <Name>HSsDI</Name>
+      <Name>AHUDI</Name>
       <Namespace />
-      <Number>1025</Number>
+      <Number>113</Number>
       <ProgrammingLanguage>DB</ProgrammingLanguage>
     </AttributeList>
     <ObjectList>

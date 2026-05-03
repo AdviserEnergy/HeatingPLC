@@ -24,6 +24,10 @@
           <Member Name="xSAFAnalogEnable" Datatype="Array[1..3] of Bool" />
           <Member Name="xSAFSp1Cmd" Datatype="Array[1..3] of Bool" />
           <Member Name="xSAFSp2Cmd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerSt1Cmd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerSt2Cmd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerSt3Cmd" Datatype="Array[1..3] of Bool" />
+          <Member Name="xCoolerSt4Cmd" Datatype="Array[1..3] of Bool" />
         </Section>
       </Sections>
     </Member>
