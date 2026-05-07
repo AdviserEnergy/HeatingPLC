@@ -25,7 +25,7 @@
 </Sections></Interface>
       <IsIECCheckEnabled>false</IsIECCheckEnabled>
       <MemoryLayout>Optimized</MemoryLayout>
-      <Name>DOvar</Name>
+      <Name>DOvars</Name>
       <Namespace />
       <Number>10010</Number>
       <ProgrammingLanguage>LAD</ProgrammingLanguage>
